@@ -20,8 +20,8 @@
 #### Associate Software Engineer, Blizzard Entertainment (Server)
 Jul 2019 - current
 - Developed and shipped Warcraft 3 Reforged
-- - Contributed to matchmaking, social, and gameplay features (fullstack: server + client + UI)
-- - Actively developing Warcraft 3 Reforged (server + client)
+  - Contributed to matchmaking, social, and gameplay features (fullstack: server + client + UI)
+  - Actively developing Warcraft 3 Reforged (server + client)
 - Supported live products Warcraft 1 + 2, Diablo 1 + 2, Starcraft: Remastered and Warcraft 3
 
 #### Intern Software Engineer, Blizzard Entertainment (Server)
