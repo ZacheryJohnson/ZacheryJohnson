@@ -2,9 +2,9 @@ Hi, I'm Zach Johnson. I'm a software engineer at Blizzard Entertainment working 
 
 ### About Me
 
-You can find my resume [here](resume.md).
+You can find my resume [here](./resume.md).
 
-You can find my (currently empty) blog [here](blog.md).
+You can find my (currently empty) blog [here](/.blog.md).
 
 You can find my Goodreads account [here](https://www.goodreads.com/user/show/35025349-zach). Please share any book recommendations you have!
 
