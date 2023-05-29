@@ -4,6 +4,7 @@
 
 ### Programming Languages
 - C++ (11/14/17/20)
+- C#
 - Rust
 - MySQL
 - Javascript (Node)
@@ -17,11 +18,20 @@
 
 ## Work History
 
+#### Senior Server Engineer, Disruptive Games
+Apr 2023 - present
+- Actively contributing towards backend service development and infrastructure design
+
+#### Server Engineer, Disruptive Games
+Sep 2022 - Apr 2023
+- Created and support existing backend services, primarily in C#
+- Migrated existing code and developed new code towards cloud-native standards
+- Stood up Kubernetes cluster through Terraform which hosts backend services and tools
+
 #### Software Engineer, Blizzard Entertainment (Server)
-Sep 2021 - current
+Sep 2021 - Jul 2022
 - Developed and shipped Diablo II: Resurrected
-  - Contributed to infrastructure design to support global play + cross-platform progressiony 
-  - Still actively developing
+  - Contributed to infrastructure design to support global play + cross-platform progression
 
 #### Associate Software Engineer, Blizzard Entertainment (Server)
 Jul 2019 - Sep 2021
