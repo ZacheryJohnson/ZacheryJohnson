@@ -1,0 +1,28 @@
+main {
+    margin: 0em 6em;
+    font-family: "Poppins", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+section {
+    padding: 1em 1em;
+}
+
+img {
+    margin: auto;
+    display: block;
+    border: 1px solid;
+    text-align: center;
+}
+
+.callout {
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-bottom: 1em;
+
+    border: 1px solid;
+    border-radius: 16px;
+    background-color: #debf85;
+}
