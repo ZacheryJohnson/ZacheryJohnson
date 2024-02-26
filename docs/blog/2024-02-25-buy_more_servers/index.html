@@ -1,15 +1,18 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>
         "Why Don't They Just Buy More Servers?"
     </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="index.css">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
 </head>
 <body>
     <main>
@@ -21,7 +24,11 @@
     </section>
 
     <section>
-        I am a backend software engineer who has worked on Warcraft 3 Reforged, Diablo 2 Resurrected, and an unannounced/recently killed title with Disruptive Games. I have seen firsthand (<a href="https://www.youtube.com/watch?v=UupPvHocUQg">and been personally responsible for</a>) "server issues" that prevent players from playing. In this article, I'll attempt to demystify what makes this so difficult, but I also want to make one point clear up front: <strong>players deserve better</strong>. As games become increasingly monetized and release before being ready, players continually get the short end of the stick. I know some will retort about the <a href="https://www.forbes.com/sites/paultassi/2023/11/11/gta-6s-publisher-says-video-games-should-theoretically-be-priced-at-dollars-per-hour/?sh=3d6f77d273f7">"value per hour" of games being lower than any other medium</a>, as if that's a thing that needs to be rectified and made worse, but the enshittification of tech is pervasive and I believe games should hold themselves to a higher standard.
+        Before beginning, I am a backend software engineer who has worked on Warcraft 3 Reforged, Diablo 2 Resurrected, and an unannounced/recently killed title with Disruptive Games. I have seen firsthand (<a href="https://www.youtube.com/watch?v=UupPvHocUQg">and been personally responsible for</a>) "server issues" that prevent players from playing. 
+    </section>
+    
+    <section>
+        In this article, I'll attempt to demystify what makes this so difficult, but I also want to make one point clear up front: <strong>players deserve better</strong>. As games become increasingly monetized and release before being ready, players continually get the short end of the stick. I know some will retort about the <a href="https://www.forbes.com/sites/paultassi/2023/11/11/gta-6s-publisher-says-video-games-should-theoretically-be-priced-at-dollars-per-hour/?sh=3d6f77d273f7">"value per hour" of games being lower than any other medium</a>, as if that's a thing that needs to be rectified and made worse, but the enshittification of tech is pervasive and I believe games should hold themselves to a higher standard.
     </section>
 
     <section>
@@ -41,7 +48,7 @@
     </section>
 
     <section>
-        And thus, "server issues" have created my favorite recurring comment that you can read in any launch day Reddit thread: <strong>"why don't they just buy more servers?</strong>"
+        And thus, "server issues" have created my favorite recurring comment that you can read in any launch day Reddit thread: "<strong>why don't they just buy more servers?</strong>"
     </section>
 
     <section>
@@ -331,12 +338,12 @@
     </section>
 
     <section>
-        I'm partially joking here, as there's no firm technical barriers preventing game devs from doing so, but the return on investment is astronomically bad. Let's summarize up front then break down each point. We need:
+        I'm partially joking here, as there's no firm technical barriers preventing game devs from doing so, but the return on investment is astronomically bad. Let's summarize up front then break down each point. We need automation software that:
         <ul>            
-            <li>automation software that can save data to verify that saves/reads from the database work as expected (should also be very easy to identify and delete automation-created saves)</li>
-            <li>automation software that invokes <em>real</em> game functionality on the server that mimics player behavior (eg just buying and selling items to vendors is not super useful; killing enemies + picking up their loot + teleporting back to town + selling to vendors is far more useful)</li>
-            <li>automation software that behaves like a real client, from game start up to loading into the main menu/frontend into matchmaking into a game server</li>
-            <li>automation software that can be run 100k times concurrently (to create load on the services), and can receive instructions from a remote computer (since we can't run 100k processes on one computer)</li>
+            <li>can save data to verify that saves/reads from the database work as expected</li>
+            <li>invokes <em>real</em> game functionality on the server that mimics player behavior</li>
+            <li>behaves like a real client, from game start-up to loading into the main menu/frontend into matchmaking into a game server</li>
+            <li>can be run 100k times concurrently (to create load on the services), and can receive instructions from a remote computer (since we can't run 100k processes on one computer)</li>
         </ul>
     </section>
 
@@ -389,7 +396,7 @@
     </section>
 
     <section>
-        The <em>quality</em> of data the Diablo 4 team got from the public betas was far more valuable than internal load testing because it was representative of what real players would do (because real players were doing those things). This manifested in a pretty poor experience for players of the beta, exclaiming "did they even test?!?!?!", but ultimately resulted in a test where the issues players <em>could</em> hit <em>were</em> hit and could be fixed as soon as possible.
+        The <em>quality</em> of data the Diablo 4 team got from the public betas was far more valuable than internal load testing because it was representative of what real players would do (because real players were doing those things). This manifested in a pretty poor experience for players of the beta, exclaiming "did they even test?!", but ultimately resulted in a test where the issues players <em>could</em> hit <em>were</em> hit and could be fixed as soon as possible.
     </section>
 
     <section>
@@ -449,7 +456,7 @@
     </section>
 
     <section>
-        I love Eleventh Hour Games and Last Epoch, and I hope that the harassment they are receiving now doesn't dissuade them from the excellent communication with players they showed throughout early access. Their launch day brought in thousands of new players, which when coupled with "server issues", results in a huge wave of harassment that can be overwhelming. All this to say: getting your launch day right means not only happy players but peace of mind and security for devs.
+        I love Eleventh Hour Games and Last Epoch, and I hope that the harassment they are receiving now doesn't dissuade them from the excellent communication with players they showed throughout early access. Their launch day brought in thousands of new players, which when coupled with "server issues", results in a huge wave of harassment that can be overwhelming. All this to say: getting your launch day right means not only happy players, but also peace of mind and security for devs.
     </section>
 
     <h2>
@@ -461,18 +468,18 @@
     </section>
 
     <section>
-        If you were told to design a bridge that could support 500 cars maximum (eg gridlock traffic), how much weight would you design that bridge to hold? Maybe you conservatively assume each of the 500 cars is densely packed with steel, such that, in the absolute worst case, you can guarantee your bridge stays up. You really don't expect 500 cars packed to the brim with steel, but in the name of safety and stability, you design your bridge to support that.
+        The original Helldivers had a peak CCU of 7k from my various Google searches (please correct me if any one has different numbers). Helldivers 2, at time of writing on a middle-of-the-week-people-are-at-work Tuesday, is 392k Steam CCU. That's not even the peak for today, and this doesn't include PlayStation players. This game could very well reach <strong>2 orders of magnitude higher than the original game</strong>. This is without a doubt the wildest game release I have ever seen.
+    </section>
+
+    <img src="media/hd2ccu.png" alt="Steam concurrent players image showing 458k players">
+
+    <section>
+        If you were told to design a bridge that could support 500 cars simultaneously (as in, only 500 cars could fit bumper-to-bumper), how much weight would you design that bridge to hold? Maybe you conservatively assume each of the 500 cars is densely packed with steel, such that, in the absolute worst case, you can guarantee your bridge stays up. You really don't expect 500 cars packed to the brim with steel, but in the name of safety and stability, you design your bridge to support that.
     </section>
 
     <section>
         And then 500 cars filled to the brim with tungsten roll onto your bridge and it collapses.
     </section>
-
-    <section>
-        The original Helldivers had a peak CCU of 7k from my various Google searches (please correct me if any one has different numbers). Helldivers 2, at time of writing on a middle-of-the-week-people-are-at-work Tuesday, is 392k Steam CCU. That's not even the peak for today, and this doesn't include PlayStation players. This game could very well reach <strong>2 orders of magnitude higher than the original game</strong>. This is without a doubt the wildest game release I have ever seen.
-    </section>
-
-    <img src="media/hd2ccu.png" alt="Steam concurrent players image showing 458k players">
 
     <section>
         As a developer and someone who has endured crunch and feelings of disappointing players: I can deeply empathize with Arrowhead devs. The feelings of celebration, relief, and joy that they could've been experiencing with 100k CCU have been entirely replaced by frustration, guilt, and exasperation with 450k+ CCU. This project was years of their lives, and lots of people are talking about "server issues" instead of the gameplay itself (which is excellent!).
@@ -491,7 +498,7 @@
     <img src="media/pilestedt.png" alt="Arrowhead CEO stating team 5x'd the maximum server capacity">
 
     <section>
-        Taking the actual CCU of 450k divided by 5 (given that they are currently 5x larger than their original design), it sounds like the original estimates placed the game around 75-100k CCU. As a reminder, Helldivers 2 is published by Sony Interactive Entertainment, who have published quite literally <a href="https://en.wikipedia.org/wiki/List_of_Sony_Interactive_Entertainment_video_games">hundreds of games</a>. There are very few publishers who's estimates are based on decades of publishing experience. If SIE gave me a CCU estimate of 100k, I'd absolutely trust their numbers at face value, <em>maaaaaybe</em> testing up to 125k for peace of mind. Testing 450k CCU would have never even come up as a rational target.
+        Taking the actual CCU of 450k divided by 5 (given that they are currently 5x larger than their original design), it sounds like the original estimates placed the game around 75-100k CCU. As a reminder, Helldivers 2 is published by Sony Interactive Entertainment, who have published quite literally <a href="https://en.wikipedia.org/wiki/List_of_Sony_Interactive_Entertainment_video_games">hundreds of games</a>. There are very few publishers who's estimates are based on decades of publishing experience. If SIE gave me a CCU estimate of 100k, I'd absolutely trust their numbers at face value, <em>maaaaaybe</em> designing a backend for and testing up to 125k for peace of mind. Designing and testing for 450k CCU would have never even come up as a rational target.
     </section>
 
     <section>
