@@ -17,6 +17,10 @@ header {
     margin: 0em 0em;
 }
 
+strong {
+    font-weight: 700;
+}
+
 section {
     padding: 1em 1em;
 }
