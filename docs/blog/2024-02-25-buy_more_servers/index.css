@@ -1,3 +1,7 @@
+:root {
+    color-scheme: light dark;
+}
+
 main {
     margin: 0em 6em;
     font-family: "Poppins", sans-serif;
@@ -24,5 +28,5 @@ img {
 
     border: 1px solid;
     border-radius: 16px;
-    background-color: #debf85;
+    background-color: light-dark(#debf85, #793c0a);
 }
