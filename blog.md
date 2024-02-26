@@ -1,1 +1,0 @@
-Currently nothing! I have lots of thoughts on books, and I'll probably get around to writing some reviews and reflections soon.

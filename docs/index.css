@@ -2,7 +2,7 @@
     color-scheme: light dark;
 }
 
-body {
+main {
     margin: 0em auto;
     font-family: "Poppins", sans-serif;
     font-optical-sizing: auto;
@@ -10,11 +10,7 @@ body {
     font-style: normal;
     font-size: 18px;
     line-height: 170%;
-    width: 768px;
-}
-
-header {
-    margin: 0em 0em;
+    width: 768px
 }
 
 section {
