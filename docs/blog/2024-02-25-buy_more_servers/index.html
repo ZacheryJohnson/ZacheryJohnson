@@ -89,17 +89,40 @@
         Continuing with our refrigerator example, we can think of a fridge as a "monolith" in software engineering speak. It is a single server that provides lots of different functionality. Need to chill something? Use the fridge. Want to drink some water? Use the fridge. Drink not cold enough and need more ice? Use the fridge.
     </section>
 
+    <figure>
+        <img src="media/fridge-monolith.PNG" alt="">
+        <figcaption>A fridge "server" can offer multiple "services".</figcaption>
+    </figure>
+
     <section>
         Monoliths are very easy to conceptualize: a one-stop shop for all functionality. But there are downsides to using them. If your fridge's power goes out, suddenly <em>all</em> of the functionality of the fridge stops working (yes, the fridge stays cool inside due to insulation, ignore that for now). If you've ever been a part of a busy kitchen, you'll also have experienced how difficult it can be to simply access the fridge with all of the chaos: if you simply want an ice cube, you may need to wait for 2-3 people to get out of the way. These issues don't translate one-to-one in software of course, but conceptually, having a single source of functionality also means having a single point of failure, and cascading failure where <em>lots</em> of things can break at once.
     </section>
 
-    <section>
-        Let's now envision a coffee shop: the pieces of functionality no longer exist in a single, big product but rather in multiple, small, specialized product. We still have a refrigerator to keep milk cold for lattes, but we also have espresso machines, and dedicated ice trays, and milk frothers, and a cash register away from all of the things needed to make a latte. Importantly, every employee at the coffee shop can focus on a few tasks rather than need to constantly bounce around and "context switch" what they're working on. We call this a "distributed system", because the different pieces of functionality that contribute to the "product" (in this case, a cup of coffee) are split amongst multiple different "services": a "order receiving" service, a "espresso shot pouring" service, and "milk insertion" service, etc.
-    </section>
+    <figure>
+        <img src="media/fridge-dos.PNG" alt="">
+        <figcaption>A monolithic fridge "server" that breaks means all "services" break.</figcaption>
+    </figure>
 
     <section>
-        Distributed systems are the majority of software backends built today (including games, and we'll get back to that in just a second), so it's important to understand their pros and cons. First off, "scaling up" a coffee shop's coffee throughput is simpler, as we can understand where our bottlenecks are. If the cashier can take 2 orders every minute, but it takes 1 minute for the espresso shot to pour, we can reason that we should scale up our espresso machines and possibly purchase another machine, allowing us to make 2 shots per minute, matching our cashier's rate. By creating a distributed system, we have created the ability to "just buy more <strike>servers</strike> espresso machines" rather than needing to "just build another coffee shop".
+        Let's now envision a coffee shop: the pieces of functionality no longer exist in a single, big product but rather in multiple, small, specialized products. We still have a refrigerator to keep milk cold for lattes, but we also have espresso machines, and dedicated ice trays, and milk frothers, and a cash register away from all of the things needed to make a latte. We call this a "distributed system", because the different pieces of functionality that contribute to the "product" (in this case, making a cup of coffee) are split amongst multiple different "services": a "order receiving" service, a "espresso shot pouring" service, and "milk insertion" service, etc.
     </section>
+
+    <figure>
+        <img src="media/coffee-svcs.PNG" alt="">
+        <figcaption>A coffee shop "server" can also offer multiple "services". Note that the customer only interacts with a few services, not all of them.</figcaption>
+    </figure>
+
+    <section>
+        Distributed systems are the majority of software backends built today (including games, and we'll get back to that in just a second), so it's important to understand their pros and cons. First off, "scaling up" a coffee shop's coffee throughput is simpler, as we can understand where our bottlenecks are.
+    </section>
+    <section>
+        If the cashier can take 2 orders every minute, but the espresso shot service can only do 1 order every minute, we can identify the bottleneck is the espresso shot service, and accordingly scale up our espresso machines. By adding another machine, we can make 2 shots per minute, matching our cashier's rate. By creating a distributed system, we have created the ability to "just buy more <strike>servers</strike> espresso machines" rather than needing to "just build another coffee shop".
+    </section>
+
+    <figure>
+        <img src="media/coffee-scale.PNG" alt="">
+        <figcaption>We "scaled up" the espresso shot service from 1 machine to 2 (orange dotted box).</figcaption>
+    </figure>
 
     <section>
         But distributed systems add complexity, and complexity is how bugs and oversights occur. A coffee shop necessarily needs all "services" to be fully functioning in order to produce coffee. If the "order receiving" service shuts down, no espresso shots will be poured. If the "espresso shot" service stops working, there's no coffee for the "milk insertion" service to be useful. Human beings are very good at solving problems and adapting to situations, but <a href="https://www.youtube.com/watch?v=VKMysMDK8wU">software is often not built in ways to handle these failures gracefully</a>.
@@ -145,6 +168,11 @@
         For example, let's use Diablo 2 Resurrected, which is a game who's backend I helped build. When you login, your game connects to an <strong>authentication service</strong> to verify you're allowed to run the game. You can either quick play or find an existing game using a <strong>matchmaking service</strong>. The <strong>matchmaking service</strong> provides you the information of a <strong>game server</strong>, which you connect to in order to actual kill monsters and pick up loot. All the while, your client is connected to <strong>Battle.net services</strong> where you can see your friends and whisper them, etc.
     </section>
 
+    <figure>
+        <img src="media/d2r-svcs.PNG">
+        <figcaption>This isn't actually what D2R's backend looks like, but is a good enough illustration for now.</figcaption> 
+    </figure>
+
     <h2>
         Why we can't just buy more servers
     </h2>
@@ -162,11 +190,25 @@
     </section>
 
     <section>
-        Backend servers interacting with each other creates lots of opportunities for failure. Imagine a bug in the game server that would send too many messages to the matchmaker, such as "match finished". If every game server is erroneously sending 10x the "match finished" messages (for example, one for each player rather than one message total), the matchmaker is suddenly - through no fault or bug of its own - 10x busier with messages and more likely to break. There are mitigations to this, such as introducing "rate limiting" (meaning we'll ignore new messages if we receive too many too quickly), but this can ignore real messages with data we care about, which itself would be a bug!
+        Backend servers interacting with each other creates lots of opportunities for failure. Imagine a bug in the game server that would send too many messages to the matchmaker, such as "match finished". If every game server is erroneously sending 10x the "match finished" messages (for example, one for each player rather than one message total), the matchmaker is suddenly - through no fault or bug of its own - 10x busier with messages and more likely to break.
     </section>
 
+    <figure>
+        <img src="media/downstream-dos.PNG">
+        <figcaption>This game server bug sends too many messages, and causes problems for the "downstream" matchmaker service.</figcaption> 
+    </figure>
+
     <section>
-        But for now, let's entertain the idea. If our matchmaking service can support 10k people at once (how we arrive at such a number is interesting but out of scope of this article), we simply need 10 matchmaking services. Don't have enough? Run more.
+        There are mitigations to this, such as introducing "rate limiting" (meaning we'll ignore new messages if we receive too many too quickly), but this can ignore real messages with data we care about, which itself would be a bug!
+    </section>
+
+    <figure>
+        <img src="media/downstream-rate.PNG">
+        <figcaption>The matchmaker service can "rate limit" and ignore messages when too many are sent, but we could be ignoring legitimate messages in this case.</figcaption> 
+    </figure>
+
+    <section>
+        But for now, let's entertain the idea that we <em>can</em> simply "buy more services". If our matchmaking service can support 10k people at once, we simply need 10 matchmaking services. Don't have enough? Run more.
     </section>
 
     <section>
@@ -209,21 +251,41 @@
         Let's revisit our coffee shop. Imagine you order a simple latte every time you go in, and the cashier begins to recognize you and memorizes your order. If another cashier starts working at this coffee shop, they will not recognize you nor will they know your usual order (they just started working here, after all). In this example, we can say that the cashier that remembers you has your order in their personal memory, and it is not shared with other cashiers as a shared memory (eg a sticky note next to the cash register).
     </section>
 
+    <figure>
+        <img src="media/barista-mem.PNG">
+        <figcaption>One barista remembers our order, and the other doesn't. Human beings don't have telepathy and sadly cannot share our memories.</figcaption> 
+    </figure>
+
     <section>
         Extrapolating this to software, let's imagine one matchmaker service loads your data when you ask to find a match. When you finish your match and try to find another match, we can't be sure that our request will go to the same matchmaker service that "remembers" us. This memory is called "process memory" in software engineering ("process" being the term for a program running on your operating system), and is not shared between services of the same type. Our coffee shop cashier in this instance has our order stored in their "process memory".
     </section>
 
     <section>
         Let's imagine our matchmaker service was able to remember up to 50k players and make matches for them at the same time. What happens when another 10k players log on and want to play? What happens when the matchmaker starts struggling, and we need to "just buy more matchmaker services" to keep up with the demand?
-    </section>
+    </section>    
+
+    <figure>
+        <img src="media/mm-process.PNG">
+        <figcaption>All of our players are "remembered" by one matchmaker service prior to scaling up.</figcaption> 
+    </figure>
 
     <section>
         Great, let's spin up another matchmaker and...oh. We have two matchmakers, each "remembering" 60k players. Surely that means pretty soon we'll need to spin up yet another matchmaker, and all of a sudden just buying more matchmakers gets increasingly less effective.
     </section>
 
+    <figure>
+        <img src="media/mm-scale.PNG">
+        <figcaption>After scaling, both matchmakers need to know everything about all players (as we can't be sure which matchmaker a player will be served by). As a result, our scaling up isn't very effective, as we still need to remember a whole bunch of data!</figcaption> 
+    </figure>
+
     <section>
         A common response to this is: not all matchmakers need to remember <em>every</em> player, and surely we can send <em>some</em> players (account names A-J) to the first matchmaker and <em>some</em> players (account names K-Z) to the other. This is a real approach, and it's called "sharding". While sharding may alleviate this particular example, what happens when 10k new players login? What if they were all named "progamer1" through "programer42069"? Is one matchmaker doing more work than the other? If we need to add a third matchmaker, do we need to "re-shard" and move players between matchmakers? The sharding solution, while solving some problems, has created new ones as well.
     </section>
+
+    <figure>
+        <img src="media/mm-shard.PNG">
+        <figcaption>With sharding, our services don't need to "remember" everything about all players, but now players <em>must</em> be serviced by a specific matchmaker rather than any available.</figcaption> 
+    </figure>
 
     <section class="callout">
         Another important facet we won't explore too deeply in this article is modern software deployment strategies. If you deploy to AWS or Azure or GCP or whatever, you do not own the computer these services are running on. At any time, the computer can go offline or otherwise stop your running process. This is the reality of cloud computing, and backend engineers understand this. Accordingly, we build services such that might die any second, which means not keeping any persistent data in process memory. If you want it to stick around, you need to save it elsewhere.
@@ -234,7 +296,7 @@
     </section>
 
     <section>
-        Okay, so keeping persistent data in service memory isn't a great idea, as it prevents us from "just buying more services". Can't we put it somewhere else instead?
+        Okay, so keeping persistent data in service memory isn't a great idea and has some difficulties, and it prevents us from "just buying more services". Can't we put it somewhere else instead?
     </section>
 
     <h2>
@@ -245,16 +307,26 @@
         Back to the coffee shop. Instead of the cashier keeping our favorite latte order in "process memory", what if they wrote it down instead? That way, any cashier that saw our face could look in their "regular customer orders" notes and look up our order. This would be a "shared memory", such that all cashiers could "remember" our order once they saw us by looking up our order. It's not "remembering" in the human sense, but if a cashier you had never met knew your order before ordering, it would certainly feel like they "remembered" you somehow.
     </section>
 
+    <figure>
+        <img src="media/barista-lookup.PNG">
+        <figcaption>Rather than personally remembering your order, the barista now looks up your order. If you're unaware that they have this lookup system, it would feel like they "remembered" you.</figcaption> 
+    </figure>
+
     <section>
         We can do something similar with our game's services. Much like we decided to move functionality out of the game server earlier, we'll now move the persistent data out of our services and into dedicated "data storage services". These are more commonly known as "databases": their sole purpose is to quickly and reliably store and retrieve persistent data. Databases, both in software and in hardware, are optimized for data storage and retrieval, but ultimately is just another "server" for our game server and services to interact with.
     </section>
+
+    <figure>
+        <img src="media/database.PNG">
+        <figcaption>An example backend for a live service video game. Game servers and services store and retrieve data from a database rather than "remembering" it themselves.</figcaption> 
+    </figure>
 
     <section class="callout">
         I'm not going to be discussing in-memory storage options like Redis or memcached in this article. These are real considerations for backend engineers and their products, but tangential to the overall point I'd like to make in this article.
     </section>
 
     <section>
-        Backend is getting progressively more complex, eh? This is the cost of being able to "just buy more" game servers. In order to make scaling up game servers simpler, we moved some complexity to services. In order to make scaling up services simpler, we moved some complexity to databases. The system grows ever more complex, meaning a lot more can and will go wrong, in order to strive for enough compute to match player demand.
+        Our backend is getting progressively more complex, eh? This is the cost of being able to "just buy more" game servers. In order to make scaling up game servers simpler, we moved some complexity to services. In order to make scaling up services simpler, we moved some complexity to databases. The system grows ever more complex, meaning a lot more can and will go wrong, but with the goal of having more servers online and available for players to play.
     </section>
 
     <section>
@@ -262,7 +334,7 @@
     </section>
 
     <section>
-        So, can we "just buy more databases"? I'm obscuring a lot of ideas with this answer, but ultimately, no. We cannot just buy more databases. The reasons why are relatively straightforward, and solutions exist for many of these problems, but getting your database design wrong up-front is catastrophic. On Diablo 2 Resurrected, <a href="https://us.forums.blizzard.com/en/d2r/t/diablo-ii-resurrected-outages-an-explanation-how-we%E2%80%99ve-been-working-on-it-and-how-we%E2%80%99re-moving-forward/28164">we got our database design wrong and it requires months to properly rearchitect</a>. 
+        So, can we "just buy more databases"? I'm obscuring a lot of ideas with this answer, but ultimately, no. We cannot just buy more databases. There are a few issues we'll investigate shortly, but above all else, getting your database design wrong up-front is catastrophic. On Diablo 2 Resurrected, <a href="https://us.forums.blizzard.com/en/d2r/t/diablo-ii-resurrected-outages-an-explanation-how-we%E2%80%99ve-been-working-on-it-and-how-we%E2%80%99re-moving-forward/28164">we got our database design wrong and it required months to properly rearchitect</a>. 
     </section>
 
     <section>
@@ -339,7 +411,7 @@
 
     <section>
         I'm partially joking here, as there's no firm technical barriers preventing game devs from doing so, but the return on investment is astronomically bad. Let's summarize up front then break down each point. We need automation software that:
-        <ul>            
+        <ul>
             <li>can save data to verify that saves/reads from the database work as expected</li>
             <li>invokes <em>real</em> game functionality on the server that mimics player behavior</li>
             <li>behaves like a real client, from game start-up to loading into the main menu/frontend into matchmaking into a game server</li>
@@ -384,11 +456,11 @@
     </h2>
 
     <section>
-        Before I left the Diablo Legacy team at Blizzard in July 2022, the Diablo 4 team had begun load testing for a very large number of players, I think in the 500k range. To that point, the game had not yet had any public access whatsoever. Many of our learnings from D2R is "we wish we had tested sooner" and "we wish we had tested more", and to the credit of the Diablo org, those lessons were immediately implemented in Diablo 4's production cycle. While I'm not sure how those load tests went internally, I do know how the first public betas went: <a href="https://www.rockpapershotgun.com/diablo-4s-pre-order-beta-is-beset-by-long-queues-and-connectivity-issues">poorly</a>.
+        Before I left the Diablo Legacy team at Blizzard in July 2022, the Diablo 4 team had begun load testing for a very large number of players, I think in the 500k range. To that point, the game had not yet had any public access whatsoever. Many of our learnings from D2R included "we wish we had tested sooner" and "we wish we had tested more", and to the credit of the Diablo org, those lessons were integrated in Diablo 4's production cycle and load testing prior to launch was a priority. While I'm not sure how those load tests went internally, I do know how the first public betas went: <a href="https://www.rockpapershotgun.com/diablo-4s-pre-order-beta-is-beset-by-long-queues-and-connectivity-issues">poorly</a>.
     </section>
 
     <section>
-        I know Blizzard as a company has fallen out of the zeitgeist of "quality games companies" recently, but the backend engineers, SREs, and QA on Diablo 4 are some of the best and brightest I have ever worked with. With the support of the org, they were load testing for at least 9 months and <em>still</em> had issues with their public betas. Shockingly, Diablo 4's official launch in June 2023 was <a href="https://www.forbes.com/sites/paultassi/2023/06/02/diablo-4s-perfect-pc-launch-is-nothing-short-of-miraculous/">the smoothest Diablo release ever</a>. How could the Diablo team have so many issues after 9 months of load testing, and yet resolve the vast majority of those issues in 3 months before launch?
+        I know Blizzard has fallen out of the zeitgeist of "quality games companies" to many, but the backend engineers, SREs, and QA on Diablo 4 are some of the best and brightest I have ever worked with. With the support of the org, they were load testing for at least 9 months and <em>still</em> had issues with their public betas. Shockingly, Diablo 4's official launch in June 2023 was <a href="https://www.forbes.com/sites/paultassi/2023/06/02/diablo-4s-perfect-pc-launch-is-nothing-short-of-miraculous/">the smoothest Diablo release ever</a>. How could the Diablo team have so many issues after 9 months of load testing, and yet resolve the vast majority of those issues in 3 months before launch?
     </section>
 
     <section>
@@ -396,7 +468,7 @@
     </section>
 
     <section>
-        The <em>quality</em> of data the Diablo 4 team got from the public betas was far more valuable than internal load testing because it was representative of what real players would do (because real players were doing those things). This manifested in a pretty poor experience for players of the beta, exclaiming "did they even test?!", but ultimately resulted in a test where the issues players <em>could</em> hit <em>were</em> hit and could be fixed as soon as possible.
+        The <em>quality</em> of data the Diablo 4 team got from the public betas was far more valuable than internal load testing because it was representative of what real players would do (because real players were doing those things). This manifested in a pretty poor experience for players of the beta, exclaiming "did they even test this?!", but ultimately resulted in a test where the issues players <em>could</em> hit <em>were</em> hit and could be fixed as soon as possible.
     </section>
 
     <section>
@@ -411,6 +483,10 @@
         The flipside of this is Last Epoch, which launched today as of this writing. Their game has been "out" in early access for years now, and is now experiencing "server issues". What gives?
     </section>
 
+    <section class="callout">
+        This section isn't meant to single out Last Epoch in particular. Path of Exile, a game that had been fully out and relatively stable for 8 years, hit <a href="https://www.pathofexile.com/forum/view-thread/3011923">database issues with a routine content update</a>. This is just to emphasize again that testing is hard: Path of Exile only encountered this issue by using real player data, and their internal test data that had worked for years was suddenly not good enough.
+    </section>
+
     <section>
         Last Epoch's previous CCU peak was 40k, in March 2023 (the release of the multiplayer update). Their CCU today was 150k. I guarantee they forecasted and tested to a similar value internally, but again, real players don't act like bots. Real players don't get disconnected and patiently wait 10 minutes for a tweet, they spam the daylights out of the "play" button. The unofficial workaround for the Helldivers 2 login issues were "spam spacebar until you're let in". Until you get hit with real player behavior, all bets are off.
     </section>
@@ -420,10 +496,6 @@
     </section>
 
     <img src="media/reddit.png" alt="Reddit screenshot describing Last Epoch load testing">
-
-    <section>
-        I'll reiterate: Last Epoch was an early access title for years (I have 275 hours at time of writing, and the game "released" today). This game had already undergone production traffic for years, and is still having issues when there is a sudden influx of players. Sure, there were changes made to accommodate a new 1.0 patch, but the infrastructure and service architecture have been years in the making.
-    </section>
 
     <section>
         In particular, I want to dig in on this particular quote:
@@ -456,7 +528,7 @@
     </section>
 
     <section>
-        I love Eleventh Hour Games and Last Epoch, and I hope that the harassment they are receiving now doesn't dissuade them from the excellent communication with players they showed throughout early access. Their launch day brought in thousands of new players, which when coupled with "server issues", results in a huge wave of harassment that can be overwhelming. All this to say: getting your launch day right means not only happy players, but also peace of mind and security for devs.
+        I love Eleventh Hour Games and Last Epoch. I had 275 hours in early access, and I've watched the game grow from a solid action RPG to a trailblazer in the genre <a href="https://youtu.be/RskRFwgoQ5g?si=6RNTXzx-i4I4VrpN&t=6506">causing PoE to catch up with their innovations</a>, and I hope that the harassment they are receiving now doesn't dissuade them from the excellent communication with players they showed throughout early access. Their launch day brought in thousands of new players, which when coupled with "server issues", results in a huge wave of harassment that can be overwhelming. All this to say: getting your launch day right means not only happy players, but also peace of mind and security for devs.
     </section>
 
     <h2>
