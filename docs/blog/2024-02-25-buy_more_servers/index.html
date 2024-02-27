@@ -6,6 +6,10 @@
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url"         content="https://blog.determinism.dev/blog/2024-02-25-buy_more_servers/">
+    <meta property="og:type"        content="article" />
+    <meta property="og:title"       content="Why Don't They Just Buy More Servers?" />
+    <meta property="og:description" content="Every live-service video game launches with issues. Why does this keep happening? What's the problem? Can't they just buy more servers?" />
 
     <link rel="stylesheet" href="index.css">
     
@@ -132,7 +136,7 @@
     </section>
 
     <section>
-        Additionally, it's not always straight-forward to understand what needs to be "scaled up" until issues occur. If we add more cashiers to handle more coffee orders, we need to remember to add more espresso machines. But what happens if we discover that at 10 cashiers + 10 espresso machines, our milk jugs we have always ordered before are suddenly not pouring quick enough? Is it enough to "just buy more milk jugs", or do we need to invest in wider-mouth milk jugs that pour quicker? Services that depend on other services (like our espresso machines rely on getting new orders from the cashier) are called "downstream services", as the work "flows downstream" from the cashier to the espresso machine. Often, these downstream services are negatively affected by "just buying more servers", as we'll see later.
+        Additionally, it's not always straightforward to understand what needs to be "scaled up" until issues occur. If we add more cashiers to handle more coffee orders, we need to remember to add more espresso machines. But what happens if we discover that at 10 cashiers + 10 espresso machines, our milk jugs we have always ordered before are suddenly not pouring quick enough? Is it enough to "just buy more milk jugs", or do we need to invest in wider-mouth milk jugs that pour quicker? Services that depend on other services (like our espresso machines rely on getting new orders from the cashier) are called "downstream services", as the work "flows downstream" from the cashier to the espresso machine. Often, these downstream services are negatively affected by "just buying more servers", as we'll see later.
     </section>
 
     <h2>
@@ -144,7 +148,7 @@
     </section>
 
     <section>
-        The reason for this is pretty straightforward: we want to be able to "just buy more servers". If our game servers were monoliths that also contained matchmaking functionality and friends list services and authentication/login services, it would be far more difficult or wasteful to "just buy more servers". Instead, we'll consider what features our game is offering, and separate those features into different "services".
+        The reason for this is pretty simple: we want to be able to "just buy more servers". If our game servers were monoliths that also contained matchmaking functionality and friends list services and authentication/login services, it would be far more difficult or wasteful to "just buy more servers". Instead, we'll consider what features our game is offering, and separate those features into different "services".
     </section>
 
     <h3>
@@ -260,11 +264,11 @@
     </figure>
 
     <section>
-        Extrapolating this to software, let's imagine one matchmaker service loads your data when you ask to find a match. When you finish your match and try to find another match, we can't be sure that our request will go to the same matchmaker service that "remembers" us. This memory is called "process memory" in software engineering ("process" being the term for a program running on your operating system), and is not shared between services of the same type. Our coffee shop cashier in this instance has our order stored in their "process memory".
+        Extrapolating this to software, let's say one matchmaker service loads your data when you ask to find a match. When you finish your match and try to find another match, we can't be sure that our request will go to the same matchmaker service that "remembers" us. This memory is called "process memory" in software engineering ("process" being the term for a program running on your operating system), and is not shared between services of the same type. Our coffee shop cashier in this instance has our order stored in their "process memory".
     </section>
 
     <section>
-        Let's imagine our matchmaker service was able to remember up to 50k players and make matches for them at the same time. What happens when another 10k players log on and want to play? What happens when the matchmaker starts struggling, and we need to "just buy more matchmaker services" to keep up with the demand?
+        As an example, say our matchmaker service was able to remember up to 50k players and make matches for them at the same time. What happens when another 10k players log on and want to play? What happens when the matchmaker starts struggling, and we need to "just buy more matchmaker services" to keep up with the demand?
     </section>    
 
     <figure>
@@ -381,7 +385,7 @@
     </section>
 
     <section>
-        And while I'm focused mainly on automated testing and load testing, which is done autonomously by backend engineers and specialized QA, this point goes for testing as a whole. A team of 15 QA members who plays the game their entire 8-hour shift every day for a 3-year dev cycle is a cumulative 93,600 hours of playtime (the majority of which was finding bugs or issues, which have since been fixed and thus those hours are not applicable to the end product). This means if you have 100k players on launch day, players have played the game more <em>in the first hour</em> than your full-time QA did over the past 3 years. Advocating for more time to test prior to release is a tough ask once all the features are "done".
+        And while I'm focused mainly on automated testing and load testing, which is done autonomously by backend engineers and specialized QA, this point goes for testing as a whole. A team of 15 QA members who plays the game their entire 8-hour shift every day for a 3-year dev cycle is a cumulative 93,600 hours of playtime (the majority of which was finding bugs or issues, which have since been fixed and thus those hours are not applicable to the end product). This means if you have 100k players on launch day, players have played the game more <strong><em>in the first hour</em></strong> than your full-time QA did over the past 3 years. Advocating for more time to test prior to release is a tough ask once all the features are "done".
     </section>
     
     <section>
@@ -561,7 +565,7 @@
     </section>
 
     <section>
-        But players shouldn't need to empathize for every developer for every game they buy. It should be expected that they buy a product and the product works immediately, and if it doesn't they have avenues to be refunded. And Arrowhead's CEO, Johan Pilestedt, echoes similar thoughts in the below tweet! It's refreshing to see a CEO advocate that players <em>don't</em> buy the game and instead check in later. <a href="https://www.ign.com/articles/final-fantasy-14-sales-stopped-endwalker">Final Fantasy 14 stopped selling copies</a> in order to combat "server issues", and that may be a solution here should Sony pursue it.    
+        But players shouldn't need to empathize for every developer for every game they buy. It should be expected that they buy a product and the product works immediately, and if it doesn't they have avenues to be refunded. And Arrowhead's CEO, Johan Pilestedt, echoes similar thoughts in the below tweet! It's refreshing to see a CEO advocate that players <em>don't</em> buy the game and instead check in later. <a href="https://www.ign.com/articles/final-fantasy-14-sales-stopped-endwalker">Final Fantasy 14 stopped selling copies</a> in order to combat "server issues", and that may be worth remembering for future game launches.
     </section>
 
     <img src="media/hd2.png" alt="Arrowhead CEO saying 'get it later' to player with 'no money'">
@@ -649,6 +653,22 @@
     <section>
         And it's certainly easier to buy more games than it is to buy more servers.
     </section>
+
+    <hr />
+
+    <footer>
+        <section>
+            <em>
+                Zach is a backend software engineer who has worked on Warcraft 3 Reforged, Diablo 2 Resurrected, and other unreleased live-service titles. He really likes action RPGs, the San Diego Padres, and the Rust programming language. He once raffled off <a href="media/k8s.jpg" class="hidden">bootleg Kubernetes merch</a> at a company retreat. 
+            </em>
+        </section>
+
+        <section>
+            <em>
+                You can check out the <a href="/index.html">blog's homepage</a> for more articles and contact information.
+            </em>
+        </section>
+    </footer>
     </main>
 </body>
 </html>

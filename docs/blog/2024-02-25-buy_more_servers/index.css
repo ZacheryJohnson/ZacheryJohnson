@@ -43,6 +43,12 @@ img {
     background-color: light-dark(#debf85, #793c0a);
 }
 
+.hidden {
+    text-decoration: none;
+    color: initial;
+    cursor: default;
+}
+
 blockquote {
     border-left: solid;
     border-color: gray;
