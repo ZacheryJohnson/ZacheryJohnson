@@ -1,1 +1,1 @@
-Hi, I'm Zach Johnson (he/him). I'm a software engineer looking for his next role with experience in the backend and developer tooling.
+Hi, I'm Zach Johnson (he/him). I'm a software engineer working at [Wolfjaw Studios](https://wolfjawstudios.com/). Code and opinions do not reflect that of my employer.
