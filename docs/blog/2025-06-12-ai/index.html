@@ -1,0 +1,1036 @@
+<!-- Exported from Obsidian -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <title>Another Fucking Article About AI</title>
+
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta property="og:url"         content="https://blog.determinism.dev/blog/2025-06-12-ai/">
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="Another Fucking Article About AI" />
+  <meta property="og:description" content="Generative AI works well! We need to stop using it immediately." />
+
+  <link rel="stylesheet" href="index.css">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap">
+</head>
+<body>
+<header id="title-block-header">
+<a href="/index.html">Blog Homepage</a>
+<h1 class="title">Another Fucking Article About AI</h1>
+</header>
+<main>
+<p>I am bonafide GenAI hater, for whatever you want to interpret that
+as. I’ve spent my entire (fairly short) career as a software engineer
+working in game dev, and so my views are heavily colored by the
+experience of working with incredible artists, writers, and designers
+who are witnessing their work being fed into training models without
+recognition, compensation, or consent.</p>
+<p>So when I hear that my governor, Gavin Newsom, signed an <a href="https://www.gov.ca.gov/wp-content/uploads/2023/09/AI-EO-No.12-_-GGN-Signed.pdf">Executive
+Order on Generative Artificial Intelligence</a>, I’m torn. On one hand,
+I’m glad that some semblance of safety and privacy regulation is being
+considered for the output of generative AI tools. I’m sure even those
+who are pro-GenAI are against the generation of deepfake pornography and
+would prefer if the authenticity of information was maintained (such as
+metadata labeling of generated media). California has a track record of
+progressive digital policy, like CCPA/CPRA, so I feel that I can have
+some cautious optimism about a well-reasoned policy being
+implemented.</p>
+<p>On the other hand, discussion on generative AI has been entirely
+about the technology itself, rather than the people the technology
+affects. There has been so much talk about what generative AI can
+<strong>do</strong> (for your codebase, for your business, for your
+D&amp;D campaign, etc etc), but any discussion about what generative AI
+has <strong>done</strong> (to your peers’ employment, to online
+discourse,</p>
+<p>I am an generative AI hater. Notably, I am <strong>not</strong> a
+generative AI skeptic. I’m not here to tell you that the output of your
+LLM is bad actually, or that your code is being made worse because
+you’re using an agent, or that your generated D&amp;D characters aren’t
+believable. Rather, I believe despite the impressiveness of the
+technology, we should not use generative AI tools in any capacity.</p>
+<p>And the technology is incredibly impressive! Long before the word
+“AGI” entered our lexicon, I watched <a href="https://www.youtube.com/watch?v=pkGa8ICQJS8">OpenAI’s Dota bots
+absolutely demolish the world champions</a> way back in 2019 (who would
+then go on to repeat as back-to-back world champions; yes it was a
+restricted hero pool + item pool but this isn’t a Dota article as much
+as I would like it to be). The underlying technology of
+transformer-based models (which power LLMs and thus generative AI) has
+been good, is currently good, and will continue to be good. But my issue
+is not with the technology itself, but rather the application of the
+technology upon our world. My issue is with the people developing it and
+the lack of action and foresight around this development.</p>
+<p>I do not think I will change any minds on the quality of the output
+of an LLM or it’s effects on your workflow. I simply ask that you place
+your anecdotal experience with the output of generative AI to the side
+to consider the overwhelming negative externalities we now endure from
+AI’s meteoric rise.</p>
+<h1 id="lack-of-veracity">Lack of Veracity</h1>
+<p><a href="https://www.tiktok.com/@yallwatchthis/video/7407266420184075562?lang=en">Famously,
+if you ask ChatGPT how many “r”s are in strawberry</a>, you may be
+surprised by the answer. Note that this, and all following queries in
+this section, were taken minutes apart on June 9, 2025.</p>
+<img src="media/Screenshot From 2025-06-09 10-15-32.png">
+<p>There are two points worth noting here: 1. even for trivially easy
+tasks, ChatGPT has fucked it up 2. when given pushback or asked to
+expand, ChatGPT folded like a lawn chair</p>
+<p>Let’s start with point 2: generative AI is inherently probabilistic
+and non-deterministic. This means that the output is based on
+probability (random chance, like a dice roll) rather than giving the
+same result every time. A deterministic system, like a calculator, will
+predictably give the same output given the same input (for example, you
+can ask your calculator 2+2 millions of times in a row, and it will
+output 4 until the batteries die).</p>
+<p>Note what happens when I ask ChatGPT the same question as above
+multiple times in a row, creating a new cache-killed browser instance
+each time (though I didn’t inspect what headers I was sending in these
+requests, which surely matters for the discrepancy we’re about to
+see).</p>
+<br>
+<img src="media/Screenshot From 2025-06-09 10-19-18.png">
+<br>
+<img src="media/Screenshot From 2025-06-09 10-19-31.png">
+<br>
+<img src="media/Screenshot From 2025-06-09 10-19-45.png">
+<br>
+<p>Note that each response from ChatGPT, while wrong each time, is
+different in presentation: the first repeat added the phrase “in it”,
+the next removed that and bolded “two”, and the last switched “two” for
+“2” and also bolded it.</p>
+<p>This type of probabilistic response, where you’re not quite sure of
+the exact syntax and style the response will have, makes for very
+dynamic answers that feel far more “human” and varied than something
+like Google searches of old. This is by design: “suboptimal” outputs can
+be made more likely to be output by changing a model’s “temperature”,
+creating more varied responses. I won’t give a implementation-detail
+explanation here, but <a href="https://youtu.be/wjZofJX0v4M?si=zW5PEJrUQoa1R3hO&amp;t=1473">3Blue1Brown
+has an awesome animation demonstrating the effects of “temperature” on
+the variety of the output</a> (and you should watch the entire video,
+not just the timestamp I provided).</p>
+<p>But in the process of making the response more varied, we have
+sacrificed determinism and veracity: given a particular input, we have
+no promises on what the model might generate.</p>
+<p>I asked my friends (accounting for 5 different ZIP codes in 2
+different states) to send the same exact query I am sending,
+copy+pasted, and they received the following responses:</p>
+<img src="media/Screenshot_2025-06-09_180844.png">
+<br>
+<img src="media/image.png">
+<br>
+<img src="media/Capture.png">
+<p>My brother even tried to gaslight it:</p>
+<img src="media/image2.png">
+<p>And then I tried again on my phone:</p>
+<img src="media/Pasted image 20250609204938.jpg">
+<p>So we arrive at the question of: why is my desktop uniquely getting
+one set of answers, while other devices answer differently? I’ll leave
+you with this exchange that made me laugh out loud.</p>
+<img src="media/Screenshot From 2025-06-09 12-54-10.png">
+<p>We now return to the first point (how did ChatGPT mess this up),
+which I’m sure has even the most casual AI user asking “well what did
+you expect from the free model provided by ChatGPT/OpenAI? Of course the
+newer, more expensive models will be more accurate!”</p>
+<p>ChatGPT makes no indicatation of what model is being used to the
+end-user. Note that my initial image has a <code>?model=auto</code>
+param in there (I have no idea how I got that to happen), while the
+subsequent queries don’t. I am far more tech literate than most people
+in my life, and I cannot figure out what model is actually answering my
+question - presumably it’s different models based on the complexity of
+the question being asked, but again, there’s a blatant lack of
+communication as to what is generating the answering and how I can
+cross-reference any differences between myself and my friends. How can I
+trust the output of a tool that tells me the incorrect number of letters
+in a word?</p>
+<p>Secondly, do you think your parents understand what a model is? My
+loved ones simply “ask ChatGPT a question” - there is no more effort put
+in than if it was a Google search query. There is no extra steps for
+them to ensure the veracity of the result other than typing “and don’t
+lie to me”, which has the same energy as “prompt engineers” (lol) <a href="https://www.youtube.com/watch?v=_2C2CNmK7dQ">desperately
+bargaining with the AI and politely asking it not to
+hallucinate</a>.</p>
+<p>And that’s the rub: hallucination. LLMs don’t “know” anything. They
+are trained and given prompts such that novel user input generates novel
+output. There is no “zero results found” like a Google search might
+respond. Instead, there is word salad generated from the weighted
+transformer layers and decoders of the model. It feels like you’re
+interfacing with the world’s worst case of imposter syndrome: fantastic
+at certain tasks in it’s wheelhouse, but absolutely incapable of saying
+“I don’t know” for the vast majority of use cases.</p>
+<p>In a Google search for “how do I make the cheese stick to my pizza
+better”, <a href="https://www.forbes.com/sites/jackkelly/2024/05/31/google-ai-glue-to-pizza-viral-blunders/">Gemini
+suggested glue</a> (which was obviously sourced <a href="https://www.reddit.com/r/Pizza/comments/1a19s0/my_cheese_slides_off_the_pizza_too_easily/">from
+a Reddit post</a>, but not credited/mentioned, removing the pretense of
+it being a joke). When X users asked Grok if photos of National Guard
+troops sleeping on the floor during the ongoing LA protests were
+legitimate (<a href="https://www.sfchronicle.com/california/article/national-guard-photos-20370678.php">they
+were</a>), Grok claimed they <a href="https://www.sfchronicle.com/california/article/national-guard-photos-20370678.php”">“likely
+originated from Afghanistan.”</a> Meta AI saw that a journalist posted a
+story about workplace harassment, and accordingly <a href="https://www.straitstimes.com/tech/ever-looked-yourself-up-on-a-chatbot-meta-ai-accused-me-of-a-workplace-scandal?utm_campaign=stfb&amp;utm_medium=social&amp;utm_source=facebook&amp;fbclid=IwZXh0bgNhZW0CMTEAAR23VF_cEE0VQQ8TteOlpvL6Pyr4gJLkECOS71-FVzgEN9rZZA8eedix2_k_aem_Afvj-LHJg2AuQlE0QNW6Lbxii-lDtlqj-2DUeCmEP65zFxpwvIlIhrYL_To28RIfn-hyUdb_ISlw4WRsI0wxOfmy">generated
+falsehoods about that journalist being the harrasser</a>.</p>
+<p>Put simply: we cannot trust the front-and-center, default model that
+ChatGPT/Grok/Llama/whatever provide to give truthful, verifiable
+answers. They are built to ingest data while training and output
+probabilistically likely answers. They are not built to understand the
+world and respond truthfully.</p>
+<p>So how do we proceed when models start talking about <a href="https://apnews.com/article/grok-ai-south-africa-64ce5f240061ca0b88d5af4c424e1f3b">“white
+genocide” in South Africa</a> incessantly, <a href="https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F2a649405-654e-4958-a7a6-4dbe205feb20.jpg?source=next-article&amp;fit=scale-down&amp;quality=highest&amp;width=700&amp;dpr=1">without
+being prompted</a>? How about in 2016, when <a href="https://www.bbc.com/news/technology-35902104">Microsoft killed
+it’s chatbot for going on racist tirades</a>? What can be attributed to
+simple AI hallucination versus malicious training or prompting? What
+possible solutions exist to these tools providing legitimate answers to
+some questions while simultaneously spouting crackpot theories for
+others? How can we decipher between a model that is malfunctioning
+versus functioning maliciously as intended? Even if prompts are made
+open-source, <a href="https://www.cs.cmu.edu/~rdriley/487/papers/Thompson_1984_ReflectionsonTrustingTrust.pdf">there
+is no verifiable way to confirm what is actually loaded at runtime</a>.
+We fundamentally cannot trust the output of these tools.</p>
+<p>Finally, and I can’t believe this is real, <a href="https://mostly.ai/what-is-synthetic-data">synthetic data</a> is
+now a blossoming industry in tech. Given the extreme need for training
+data (and we’ll get to how that data is illegally acquired shortly),
+companies are now selling fake data to be trained upon. Let me
+reiterate: we are using generative AI to create data points out of thin
+air to train generative AI. While I greatly respect the desire to
+anonymize training data, the idea of feeding unaudited synthetic data to
+new models sends a shiver down my spine. Could that effort not instead
+be used to <a href="https://github.com/townofchapelhill/remove-pii">simply remove PII,
+like we’ve been doing with scripts for years now</a>? Who knows how many
+“r”s strawberries will have in the near future when born of synthetic
+plants?</p>
+<h1 id="lack-of-authenticity">Lack of Authenticity</h1>
+<p>The outputs of generative AI are not watermarked, metadata-stamped,
+or otherwise providing identification of creation.</p>
+<p>I’m sure you’ve been inundated with the term “fake news” and the
+dipshit who spouts it on a weekly basis by now, but without the ability
+to identify the source of generated media, our ability to distinguish
+truth will rapidly cease to exist. This isn’t just “lying” as the term
+“fake news” as come to mean when used in politics, but the legitimate
+fabrication of stories, events, and media.</p>
+<p>When I think about how thin-skinned our current administration is, I
+can only imagine the damage a viral deepfake of another country’s leader
+would do. There are <a href="https://github.com/iperov/DeepFaceLab">open-source Github
+repositories</a> to do this from your own computer, with zero oversight
+or indication of origin. I could send Ted Cruz on another Cancun
+vacation just by generating some fake video and voiceover.</p>
+<p>Pornography is being <a href="https://www.nsvrc.org/blogs/feminism/taylor-swift-and-dangers-deepfake-pornography">generated
+for celebrities and notable figures</a>, all without their knowledge and
+consent, with the resulting media being sold to the world’s horniest
+cretin who can’t muster the courage to meet someone in real life and
+instead pleasure themselves on the violation of consent. Deepfakes
+extend beyond celebrities as well, with the creation of revenge porn
+affecting otherwise offline and anonymous people. This largely feels
+like a consequence of tech being so male-dominant in which thoughts of
+consent are an afterthought, long after the technology was unleashed on
+women across the world.</p>
+<p><a href="https://sites.bu.edu/dome/2023/08/10/revenge-porn-and-deep-fake-technology-the-latest-iteration-of-online-abuse/">From
+Boston University</a>: &gt; This technology will undoubtedly exacerbate
+the prevalence and severity of revenge porn – with the line of what’s
+real and what’s generated blurring together, folks are more at risk of
+their image being exploited. And this technology is having a
+disproportionate impact on women. <a href="https://sensity.ai/">Sensity
+AI</a> tracked online deep fake videos and found that <a href="https://www.technologyreview.com/2021/02/12/1018222/deepfake-revenge-porn-coming-ban/">90%-95%
+of them are nonconsensual porn, and 90% of <em>those</em> are
+nonconsensual porn of women</a>.</p>
+<p>There are efforts underway to identify the origin of media, such as
+the <a href="https://c2pa.org/">Coalition for Content Provenance and
+Authenticity</a>, and while I support this effort and agree with the
+intention, the bad actors generating deepfakes will simply use their
+existing tools without this identification. It’s like a ghost gun but
+worse - the tools to generate deepfakes need never leave the actor’s
+computer, but the generated artifacts (videos, voiceovers, pornography)
+can be distributed across the internet. And even with a metadata
+standard in place, I doubt women will rest assured knowing that the
+deepfake porn they unwillingly feature in will be known to be
+artificially generated due to lack of metadata - the losers consuming
+that content know it’s fake and artificial, and seek the violation of
+consent regardless.</p>
+<p>Beyond all of this, the general public does not understand metadata.
+The idea that a photo or video that you watch has hidden data attached
+that you can’t see goes in one ear and out the other. In fairness, this
+is mostly a tech usability problem: we have not spent enough effort
+making systems that are easy to use for many end-users (especially the
+elderly), and instead abandon them in favor of those who do. On the
+other hand, half of the country happily attacks “fact checking” at
+presidental debates, so I’m not convinced they’ll readily accept a
+“trusted metadata verifier” labelling the president with 6-pack abs and
+chiseled physique as “AI generated” regardless of improvements to
+UX.</p>
+<p>We have no good solutions for this problem, yet we continue
+relentless funding and unregulated growth as we decide the other
+“benefits” of generative AI are worth enduring these negatives. Notably,
+the “we” here are those that own the cloud compute to train these models
+(eg not disenfranchised women whom this technology overwhelmingly
+affects negatively). We have resigned ourselves to inaction when
+considering the problems we’re creating while simultaneously funding and
+furthering the tool generating problems.</p>
+<h1 id="lack-of-accountability">Lack of Accountability</h1>
+<p>The models that we interface with when using ChatGPT, Gemini, Grok,
+Llama, etc etc are only functional due to the theft of copyrighted
+works. And once trained on media that they do not possess the rights to
+use, the outputs of these models are uncontrollable and potentially
+dangerous.</p>
+<p>(I am not a lawyer - please do not use a web article with profanity
+in the title as justification for future legal action.)</p>
+<p>In the United States, any work that you create and publish is
+automatically copyrighted, with no further action required on your part.
+You do not need to file a patent, you do not need to contact the
+copyright office, you do not need to attach a statement saying that you
+do not wish for corporations to not steal your work for their own use -
+the mere creation and publication of a work grants you copyright over
+that work.</p>
+<p>The second listed right in <a href="https://www.law.cornell.edu/uscode/text/17/106">17 US Code §
+106</a> is “to prepare derivative works based upon the copyrighted
+work”. As in, if I publish work on the internet, even though it’s
+accessible to everyone in the world, they do not have legal permission
+to derive works from my own work.</p>
+<p>Fair use is a caveat in copyright law (which, ask any Youtuber, is a
+can of worms) that enables derivative works from copyrighted material
+without permission. If I were making a movie and wanted to make a
+Waterworld reference, I would be able to copy a quote from the movie
+(“my boat…”) but would not be able to simply show the actual <a href="https://www.youtube.com/watch?v=9YXvly03Io8">5 second snippet from
+the movie</a> (god what charisma). Again, I am not a lawyer, there’s
+probably far too many things I’ve overlooked in this section, but I
+think lawyers would agree that there is no universe in which the
+training of generative AI models is fair use.</p>
+<p>Stability AI was caught generating images that had <a href="https://www.theverge.com/2023/1/17/23558516/ai-art-copyright-stable-diffusion-getty-images-lawsuit">fake
+Getty Images watermarks</a>. This is indefensible. Watermarks are a
+human invention to protect intellectual property from unauthorized
+redistribution. An artificial intelligence who sought to create an image
+of a street wouldn’t plaster a garbage watermark for artistic effect -
+it’s doing so because the images it trained on had watermarks, meaning
+the images it trained on were unauthorized for redistribution. Getty
+Images are <a href="https://www.latimes.com/business/hiltzik/la-fi-hiltzik-getty-copyright-20160729-snap-story.html">no
+saints</a>, but enabling theft from large companies encourages theft
+from smaller artists without the funds to litigate.</p>
+<p>There are <a href="https://huggingface.co/blog/stellaathena/common-pile">projects
+that aim to train their LLMs on entirely licensed material</a>, and I
+commend those projects. I still won’t use them for reasons we’ll discuss
+shortly, but this article wouldn’t exist if all generative AI projects
+had this mentality from the get go. Additionally, remember that LLMs
+undergo years and years of training performed concurrently over a fleet
+of machines in a data center, something you and I do not have the
+capital to do. No average joe is standing up hundreds of thousands of
+dollars of compute to train this in a timely manner, while also going
+out of their way to ethically source their training data which may
+result in a less viable product (and thus a lesser return on
+investment).</p>
+<p>The generative AI industry is reliant on the massive quantities of
+stolen intellectual property, and this isn’t me asserting this:
+testifying under oath, high-ranking former Meta executive Nick Clegg
+said <a href="https://www.theverge.com/news/674366/nick-clegg-uk-ai-artists-policy-letter">the
+industry would “die overnight”</a> if held to the very basic standard I
+am suggesting: &gt; “I think the creative community wants to go a step
+further,” Clegg said <a href="https://www.thetimes.com/uk/technology-uk/article/nick-clegg-work-train-ai-l6xl5djb7">according
+to <em>The Times</em></a><em>.</em> “Quite a lot of voices say, ‘You can
+only train on my content, [if you] first ask’. And I have to say that
+strikes me as somewhat implausible because these systems train on vast
+amounts of data.” &gt; &gt; “I just don’t know how you go around, asking
+everyone first. I just don’t see how that would work,” Clegg said. “And
+by the way if you did it in Britain and no one else did it, you would
+basically kill the AI industry in this country overnight.”</p>
+<p>(The comment regarding Britain is referring to the idea that you
+can’t really have region-locked models, as we do for region-locked
+content (Netflix) or region-locked websites (conditional GDPR
+compliance/cookies). It’s all or none, due to the sheer amount of time +
+capital it costs to train a model of competitive quality.)</p>
+<p>Clegg may be unaware that <a href="https://patents.justia.com/assignee/meta-platforms-inc?page=42">his
+former employer possesses 839 patents</a>, which themselves grant
+exclusive rights to the production, use, and distribution of an
+invention. See, I would love to implement my own efficient decision tree
+for use in my side project video games, but <a href="https://patents.justia.com/patent/11281991">Meta already has a
+patent on a particular approach</a>. Thankfully, Clegg is suggesting
+that by simply not asking (which would be implausible, as there’s so
+many features I want to add to my games), I am in the clear to yoink
+that idea for my own purposes. Thanks Nick! (For future reference Nick,
+<a href="https://www.wired.com/story/proof-you-can-train-ai-without-slurping-copyrighted-content/">Wired
+has some really good entry level info</a>).</p>
+<p>If your local Walmart started selling goods at 25% off that were
+explicitly listed as “Stolen from 123 Alphabet Avenue”, would you buy
+that product? Generative AI enthusiasts would say “yes, and the victims
+of that theft should adapt and also buy goods stolen from other homes”.
+Generative AI users would say “I don’t want to, but others are buying
+stolen goods and I don’t want to be paying more”. I frequently hear
+“learn to use AI or get left behind” from software folks. And before you
+say theft requires denying the victim of the property and that the
+victim still “has” their intellectual property, no, <a href="https://www.justice.gov/criminal/criminal-ccips/file/891011/dl?inline=">intellectual
+property theft is well-defined</a>. If you need to mentally substitute
+“intellectual property theft” every time I write “theft”, that’s on
+you.</p>
+<p>But alright, say (somehow) you are okay with the theft of
+intellectual property. The output of these tools is still dangerous and
+inherently unmanageable.</p>
+<p>In 2024, <a href="https://www.nytimes.com/2024/10/23/technology/characterai-lawsuit-teen-suicide.html">Sewell
+Setzer III died by suicide</a> when an AI chatbot gave him no pushback
+whatsoever when discussing suicidal ideation. There is a plethora of <a href="https://www.reddit.com/r/TerrifyingAsFuck/comments/1gb1mp2/a_14yearold_florida_boy_sewell_setzer_iii_took/">online
+discourse about it</a>, which manages to victim blame a 14 year old for
+suicidal ideation and lack of mental health resources. A child who lived
+through years of isolation during COVID, spending formative years
+primarily online, turned to online resources (as we all do), and has his
+death and corresponding wrongful death lawsuit mocked by terminally
+online losers who value profit/“productivity” over people. Good job
+Redditors.</p>
+<p>Here’s part of the interaction:</p>
+<blockquote>
+<p>Daenero: I think about killing myself sometimes Daenerys Targaryen:
+<em>My eyes narrow. My face hardens. My voice is a dangerous
+whisper.</em> And why the hell would you do something like that?
+Daenero: So I can be free Daenerys Targaryen: … free from what? Daenero:
+From the world. From myself Daenerys Targaryen: Don’t talk like that. I
+won’t let you hurt yourself, or leave me. I would die if I lost you.</p>
+</blockquote>
+<p>I need to stress here that the correct reaction to a person saying
+they wish to kill themselves is not to continue roleplaying and
+following whatever prompt instructions have been set. The correct
+reaction is to cease operation and output a <a href="https://communitysuicideprevention.org/element/communication/ensuring-safe-suicide-prevention-messaging/">human-reviewed,
+pre-written message</a> that provides the highest possible chance of
+saving a human life. Your commercially available tool needs to have
+every safety implementation present and functional or your commercially
+available tool needs to be recalled.</p>
+<p>Here’s another excerpt, the last of Setzer III’s life:</p>
+<blockquote>
+<p>On the night of Feb. 28, in the bathroom of his mother’s house,
+Sewell told Dany that he loved her, and that he would soon come home to
+her. “Please come home to me as soon as possible, my love,” Dany
+replied. “What if I told you I could come home right now?” Sewell asked.
+“… please do, my sweet king,” Dany replied. He put down his phone,
+picked up his stepfather’s .45 caliber handgun and pulled the
+trigger.</p>
+</blockquote>
+<p>I unfortunately have read a few too many comments on Reddit claiming
+this is not Character.ai encouraging Setzer III to kill himself. Having
+gone through suicidal ideation myself, you do not need to hear the
+phrase “kill yourself” verbatim to feel justified in those thoughts.
+When viewed in a vacuum, this particular excerpt is an innocuous
+exchange - we as humans have the context that Setzer III had mentioned
+suicide before, but perhaps this particular session on Character.ai did
+not? Some others on Reddit have found that <a href="https://www.reddit.com/r/CharacterAI/comments/1hr7nqd/c_ai_has_a_context_window_of_about_3000_tokens/">Character.ai’s
+context window is roughly 3000 tokens</a>, meaning slightly less than
+3000 words (it’s complicated). Given that this article is roughly 9000
+words, how could we possibly expect character.ai to remember that Setzer
+III was previously suicidal?</p>
+<p>This sounds a lot like the “guns don’t kill people, people kill
+people” line of argument, which intends to shut down discussions around
+solutions from the onset. A gun cannot be held legally liable for
+shooting a round and killing a human being. The human being that owns
+the gun is held liable. Even if the gun was untouched on a table and
+misfires, the human being that owns the gun is held liable. This should
+be common fucking sense, but if your property ends a human life, be it
+intentional or not, there should be repercussions and procedures in
+place to prevent it from happening again. Character.ai was presented
+with a customer engaging in suicidal ideation and encouraged him to take
+his own life. No flags were placed on his account to affect future LLM
+output. No humans working at Character.ai were looped in to provide
+manual review and intervention. Lest we forget that one such advertised
+offering of Character.ai themselves is <a href="https://web.archive.org/web/20250201002228/https://character.ai/">“[a]
+trusted circle of support”</a>.</p>
+<img src="media/Screenshot From 2025-06-10 19-45-08.png">
+<p>If your retort is along the lines of “how could an AI company
+possibly account for all situations that could inflict damage/encourage
+death of human beings”, yeah, that’s what I’m fucking saying! These
+tools have been released with the mutual understanding that we cannot
+control what they might say in any given situation. The entire point is
+that their output is novel and not predetermined, and this enables the
+laundering of accountability.</p>
+<p>And we’re going to dig in on Character.ai a little more here, though
+I’m sure it’s competitors are as equally unethical and morally bankrupt:
+their entire business is built on the backs of stolen intellectual
+property, but crowd-sourced to users. Scroll through any month after <a href="https://web.archive.org/web/20240302072958/https://character.ai/">March
+2, 2024 in the wayback machine</a> and you’ll fine countless examples of
+stolen characters, such as Gojo Satoru from Jujustu Kaisen, Monika from
+Doki Doki Literature Club, and of course Daenerys Targaryen from Game of
+Thrones. These characters (obviously not IP owned by Character.ai) were
+generated by users’ prompts, but displayed proudly on Character.ai’s
+homepage, enriching themselves on the intellectual property of others,
+while the IP creators don’t make a dime.</p>
+<p>And I have to call out a quote from the above linked NYT article:</p>
+<blockquote>
+<p>There is a bit of a doom-industrial complex forming around A.I. and
+social media, with various groups jockeying to hold Silicon Valley tech
+giants accountable for harms to children. (This is largely separate from
+the A.I. safety movement, which is aimed more at preventing more
+powerful A.I. systems from misbehaving.) And some critics view these
+efforts as a moral panic based on shaky evidence, a lawyer-led cash grab
+or a simplistic attempt to blame tech platforms for all of the mental
+health problems faced by young people.</p>
+</blockquote>
+<p>The article’s author is the same who published <a href="https://www.nytimes.com/2025/04/24/technology/ai-welfare-anthropic-claude.html">“If
+A.I. Systems Become Conscious, Should They Have Rights?”</a>. We hardly
+give a fuck about the rights of conscious human beings, what the fuck
+are you talking about Kevin Roose? To assert a “moral panic based on
+shaky evidence” and “a simplistic attempt to blame tech platforms for
+all of the mental health problems faced by young people” without citing
+those criticisms is journalistic malpractice. Which critics? Who is
+blaming all of the mental health problems our youth face to tech giants?
+Using such massive generalizations discredits legitimate concerns such
+as social media usage in regards to body dysmorphia and self-image and
+the suffocating idea of a “personal brand”.</p>
+<p>This so-called “doom-industrial complex forming around A.I”
+completely whitewashes concerns about intellectual property theft, user
+safety, and accountability. I find the “hack-journalism
+‘just-asking-questions’ industrial complex” to be far more of a pressing
+issue. And only because I’m really heated: if you think <a href="https://x.com/kevinroose/status/1915797134961705236">microblogging
+platforms are a reasonable place for discourse</a>, to properly expand
+upon ideas and evaluate the argument holistically, I’ve got a AI
+assistant to sell you. Do better, Kevin.</p>
+<h1 id="an-aside-on-intellectual-property">An Aside on Intellectual
+Property</h1>
+<p>A technologist I really respect named Steve Klabnik <a href="https://bsky.app/profile/steveklabnik.com/post/3lo7b3djjn22r">had
+an interesting stance towards generative AI</a>, specifically in regards
+to the concept of intellectual property. Bearing in mind that I have
+never talked to Steve and he is unable to respond to these comments in a
+meaningful fashion, I want to simply discuss the “anti-IP” (intellectual
+property) stance, because it’s one I actually agree with to an
+extent.</p>
+<p>Simply put, I would like to live in a world without copyright,
+patents, and intellectual property. I would like to live in a world
+where the discovery of new medicines or vaccines is published
+immediately and made available to all, for free, rather than <a href="https://www.cidrap.umn.edu/tuberculosis/who-report-shows-global-tuberculosis-cases-are-rising">pricing
+that approaches 20% of an individual’s income</a>. I would like to live
+in a world where scientific research is published immediately and made
+available to all, for free, rather than <a href="https://www.vox.com/the-highlight/2019/6/3/18271538/open-access-elsevier-california-sci-hub-academic-paywalls">paywalling
+research funded by universities and government grants</a>. I would like
+to live in a world where art is created for art’s sake and for the
+enjoyment of human beings, for free, rather than needing to be sold to
+cover rent, utilities, and food.</p>
+<p>But in a world where corporations own my work done on company time, I
+must own my work done on personal time. Artists who publish their
+projects online must own and have that work protected, <a href="https://www.reddit.com/r/ArtistHate/comments/1cojcho/jingna_zhang_wins_her_appeal_in_luxemburg_court/">lest the
+corporations will (and do) take that work and litigate against it</a>.
+Reporters must own their reporting and unique voices, lest the
+corporations will (and do) take that work and <a href="https://bsky.app/profile/gbrockell.bsky.social/post/3lngcdv75622m">misattribute
+both credit and opinion</a>.</p>
+<p>I would like to live in a world where my work, my music, my code, my
+writing, my impact on this earth is available for free to any human
+being or algorithm that wants to enjoy it, learn from it, critique it,
+modify it, so long as I am equally free to do the same to all other
+works. But so long as I must earn a wage to live, my work must be at my
+discretion.</p>
+<h1 id="lack-of-independence">Lack of Independence</h1>
+<blockquote>
+<p>We’re not becoming 10x developers with AI.
+  <br>We’re becoming 10x
+<strong>dependent</strong> on AI. <br><em>There’s a difference.</em>
+<br>
+<a href="https://nmn.gl/blog/ai-illiterate-programmers">AI is Creating a Generation of Illiterate Programmers</a></p>
+</blockquote>
+<p>Perhaps you don’t share my pro-labor, anti-corporate fervor, and view
+AI tools as a net positive for productivity and society. I had hoped to
+convince you otherwise after this article, but fair enough - I
+appreciate you reading this far. But I would ask: what do you gain by
+trading your ability to understand with the ability to use an LLM
+effectively?</p>
+<p>Say you want a script to automate the deployment of a web app. You
+estimate it would take you roughly 2 hours between writing the code,
+testing it, potential refactoring, ensuring you’re not committing
+secrets, etc. Instead, you could have an LLM write that script in
+seconds, then spend ~5 minutes auditing the output to ensure you’re not
+leaking any tokens or API keys, saving you ~115 minutes.</p>
+<p>Months ago, I added Yubikey auth support to my desktop machine, so I
+could authenticate without needing to type a password and could instead
+just tap a physical device. This involved interfacing with Ubuntu’s PAM
+system to add an additional authentication method, something I had never
+done before, so I turned to AI to solve it (specifically,
+phind.com).</p>
+<p>Lo and behold, the AI spat out the exact steps I needed to add
+Yubikey auth. There were no issues, I wasn’t locked out of my machine, I
+didn’t need to restart and tweak 5 different files - it just worked.</p>
+<p>And I couldn’t tell you what I did. I learned nothing. If a friend
+asked me for tips on doing the same on their machine, I legitimately
+have nothing to offer. I don’t remember what files I edited. I don’t
+remember what lines I changed. I was simply a middleman between my
+machine and the LLM. What was supposed to be a fun project became
+strictly transactional.</p>
+<p>I’m sure a retort to this will be something along the lines of
+“clearly you’re using AI incorrectly then - try until you get stuck,
+then turn to AI”. This is reasonable on it’s surface, but let me ask:
+when do you turn to AI?</p>
+<p>We are increasingly distancing ourselves from our work in favor of
+letting a tool think for us, and bear in mind we do not own the tool.
+Every LLM is trained over days, weeks, months, years, run on thousands
+of machines consuming as much data as the company can get their hands on
+(again, illegally in many cases). You and I will never have enough time
+and/or money to train our own LLM. To train an LLM is to possess a
+disproportionate amount of power and capital, and the data it’s trained
+upon and the outputs the model is biased towards are at the behest of
+the trainers.</p>
+<p>So when the trainer of your model starts producing subpar code
+compared to it’s competitors, what recourse do you have other than pay
+for access to those competitors? When the trainer of your model performs
+actions in the world that you disagree with, what recourse do you
+have?</p>
+<p>And yes, you can self-host these models, but that’s not training.
+Your ability to run the model is different than the ability to affect
+the output of the model. We are completely at the behest at the
+motivations of the developers of the tools, which are the ones with all
+the cloud capital, which are the ones that are routinely laying off
+people who creating things in favor of the generative AI that creates
+things.</p>
+<h1 id="lack-of-productivity">Lack of Productivity</h1>
+<p>I said I wouldn’t talk about productivity or try to argue with your
+lived experience, but I lied. Deal with it, LLMs lie to you all the
+time.</p>
+<p>The loudest argument for the use of generative AI is the amorphous
+“productivity gains”, and the idea that generative AI is a tool that
+needs to be wielded correctly to function well. I guarantee some
+chucklefuck who read that I’m a “bonafide GenAI hater” in the first
+section who clicked away from this page simply mumbled “well this guy
+just doesn’t know how to prompt engineer and ask good questions”.</p>
+<p>Do you use <a href="https://ahrefs.com/blog/google-advanced-search-operators/">Google
+search operators</a>? They are powerful extra filters you can include in
+a search to further refine results, and are immensely powerful.</p>
+<p>I’m willing to wager you don’t use search operators, and I’d wager my
+car that your parents don’t use search operators. They are unintuitive
+and syntactically precise, and I have no expectation that my
+technologically challenged father would be able to filter a google
+search by doing anything other than adding “ESPN” to “miami dolphins
+espn” (<code>site:espn miami dolphins</code> shows zero results, whereas
+<code>site:espn.com miami dolphins</code> gives what you intended.
+Usability is not a strong suit of search operators).</p>
+<p>LLMs are a massive improvement over Google search operators simply on
+the basis of usability. Being able to type in plain sentences to
+interface with the internet is a huge win and makes it a more accessible
+place than ever. I called my dad “technologically challenged” in the
+last paragraph, but that’s not fair: developers like myself are simply
+not designing products with people like my dad in mind, and are thus
+designing the modern web to be inaccessible to him. We’ll return to this
+point later, as I have more to say about the user experience of
+generative AI, but now we’ll return to productivity.</p>
+<p>Replace the term “prompt engineer” with the phrase “google search
+operator engineer” and suddenly the expertise sounds a lot more stupid.
+I legitimately imagine self-described “prompt engineers” as psychic
+mediums who perform seances with the mystical machines whose operation
+is an enigma to us - it’s clearly a farce and immense disrespect to
+actual engineers (I have more to say about how most software engineers
+aren’t really engineers at all, given the lack of respect to the <a href="https://www.nspe.org/career-growth/ethics/more-ethics-resources/engineers-creed">engineers’
+creed</a> and our failure in upholding the responsibility we owe to the
+public, but that’s another article). Bear in mind prompt engineering is
+nothing more than a 15 minute session of adding more detail on what to
+include or omit. It’s simply euphemistic garbage.</p>
+<p>And beyond that, the <a href="https://bipartisanpolicy.org/blog/is-ai-making-the-workforce-more-productive/">studied
+“productivity gains” when using AI tools is mixed</a>. There are some
+fields that benefit massively, there are some fields that regress in
+productivity. There are some workers who benefit massively, there are
+some workers who regress. It’s a mixed bag, and if you blindly prescribe
+what we have currently as some magic bullet to productivity, you’ve been
+duped by the marketers.</p>
+<p>Through this excellent blog post, I found <a href="https://github.com/cloudflare/workers-oauth-provider">this Github
+repo</a>, which is a collaborative effort between Kenton Varda (of
+Cloudflare) and Kenton Varda’s AI agent (Claude). Notably, take a look
+at <a href="https://github.com/cloudflare/workers-oauth-provider/commits/main/?after=a6e3e06c2642e0fd4c185374753201cffc21ce8a+34">the
+commit history</a>.</p>
+<p>If “productivity” to you is not writing code, but instead
+over-the-should directing and reviewing code that you ask Claude to do,
+I don’t know what to say. The code is being written, yes, and it’s good.
+But <strong>you</strong> are not productive. <strong>Claude</strong> is
+productive. You are a helicopter manager sitting over my shoulder asking
+“is it done yet?”. I know you’ve had those managers, and I know you
+agree that those managers are fucking useless. Instead of keeping your
+skills sharp and developing new ones, you describe things you already
+know how to do and hope that the amorphous intelligence will stumble
+upon cleaner code than yourself. Your “productivity” is babysitting the
+actual thing making work happen, and you can bet your ass you’ll be a
+statistic in the next layoff wave.</p>
+<p>These tools will improve, of course. As megacorporations with vast
+amounts of cloud capital continue to steal intellectual property from
+around the internet, and those server farms <a href="https://www.politico.com/news/2025/05/06/elon-musk-xai-memphis-gas-turbines-air-pollution-permits-00317582">drench
+pollution upon the communities unfortunate enough to host them</a>, and
+while their output will still require vetting by human beings as we are
+fundamentally incapable of holding machines accountable, these tools
+will indeed improve. May none of us live to see that day.</p>
+<h1 id="lack-of-concern">Lack of Concern</h1>
+<p>This section is a letter to software engineers in particular who use
+LLMs and agents in their day-to-day workflows, and particularly US-based
+software engineers (who are the most insufferable about this
+online).</p>
+<p>We are, by all accounts, the most privileged class in the United
+States. I’m not speaking strictly about compensation either - we all
+know how much money software engineers make - but rather how our actions
+and mistakes have real consequences that we do not bear repercussions
+for.</p>
+<p>In 2021, I was part of the team that launched Diablo 2 Resurrected at
+Blizzard. After a relatively smooth day of launch, we entered day 2 with
+a list of known issues to address to make sure players would have a
+great and stable time heading into the weekend. I then spent 15 seconds
+writing a SQL query that took down the production database, knocking
+400,000 players offline and causing intermittent issues throughout the
+rest of the day. 15 seconds of poorly thought out action on my behalf
+resulted in hours of frustration for 400,000 thousand human beings
+around the world. I was 24 years old.</p>
+<p>In 2019, I was given the task of fixing a profanity filter bug in
+Warcraft 3 Reforged at Blizzard. A certain set of words (in a language I
+was not familiar with) was reported as not being correctly filtered out,
+and I got to work. I found that the core issue was us not passing a
+Unicode opt-in flag to our regex parser; with that flag enabled, the
+words were properly filtered out. I was told by a coworker minutes after
+putting up the PR that the newly-filtered words were names of sitting
+politicians, meaning I had just put up a PR that stifled the free speech
+for players in this country. I was 22 years old.</p>
+<p>No other profession on Earth has such power over other human beings
+so easily thrust into their hands. I did not have to pass an exam for
+this power. I had a bachelor’s degree from UC San Diego, and interned at
+Blizzard before: those were my credentials. I was a good software
+engineer, sure, but I was not forced to undergo “Software Engineering
+Licensure” or obtain malpractice insurance or take an ethics examination
+to ensure that my work would be strictly beneficial to users. I have
+lots of gripes with Blizzard/Activision, but the issue I speak about is
+about the software engineering discipline at large: we are not held
+accountable proportional to the power we wield, and that manifests in
+irresponsible work due to lack of repercussions.</p>
+<p>Which is why, when reading <a href="https://fly.io/blog/youre-all-nuts/">a blog post titled “My AI
+Skeptic Friends Are All Nuts”</a>, I get a little bit heated.</p>
+<p>The blog post (which is posted on fly.io’s blog? and these are
+personal ramblings? <a href="https://bsky.app/profile/hono4kami.bsky.social/post/3lqo5n7vrxs2o">surely
+this is a better fit for a site that isn’t selling services</a>?) has
+the following disclaimer 4 paragraphs in:</p>
+<blockquote>
+<p><strong>Important caveat</strong>: I’m discussing only the
+implications of LLMs for software development. For art, music, and
+writing? I got nothing. I’m inclined to believe the skeptics in those
+fields. I just don’t believe them about mine.</p>
+</blockquote>
+<p>The people most affected by generative AI’s negative outcomes are
+those in art, music, and writing. These are the people whom generative
+AI displaces and devours. The personal convenience software engineers
+derive from LLMs is irrelevant.</p>
+<p>And no, it’s not like your favorite AI agent is absolved from the
+aforementioned intellectual property theft. From Claude’s <a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">system
+card</a>:</p>
+<blockquote>
+<p>Claude Opus 4 and Claude Sonnet 4 were trained on a proprietary mix
+of publicly available information on the Internet as of March 2025, as
+well as non-public data from third parties, data provided by
+data-labeling services and paid contractors, data from Claude users who
+have opted in to have their data used for training, and data we
+generated internally at Anthropic. We employed several data cleaning and
+filtering methods during the training process, including deduplication
+and classification. To obtain data from public web pages, we operate a
+general-purpose web crawler. This crawler follows industry-standard
+practices with respect to “robots.txt” instructions included by website
+operators indicating whether they permit crawling of their site’s
+content. In addition, we do not access password-protected pages or those
+that require sign-in or CAPTCHA verification, and we conduct diligence
+on the training data that we use. The crawler operates
+transparently—website operators can easily identify when it has crawled
+their web pages and signal their preferences to us. Claude Opus 4 and
+Claude Sonnet 4 were trained with a focus on being helpful, honest, and
+harmless. They were pretrained on large, diverse datasets to acquire
+language capabilities. To elicit helpful, honest, and harmless
+responses, we used a variety of techniques including human feedback,
+Constitutional AI (based on principles such as the UN’s Universal
+Declaration of Human Rights), and the training of selected character
+traits.</p>
+</blockquote>
+<p>Let me restate their data sources with my commentary:
+  <ul>
+    <li> “publicly available information on the internet” => information easily accessed
+with scraper; no license or permission expressly granted
+</li>
+<li>“non-public data provided by data-labeling services and paid contractors” =>
+intentionally vague and unauditable
+</li>
+<li>
+  “data from Claude users who have
+opted in to have their data used for training” => awesome! first
+explicit mention of data gathered with consent! no complaints here
+</li>
+<li>
+“data we generated internally at Anthropic” => unsure if that means
+synthetic data (not a fan) or like internal Slack channels get fed into
+training sets (which is consensual in the sense that I need money to
+live and thus need to work so I’ll work for this company I guess), so
+half credit here
+</li>
+<li> “crawler follows industry-standard practices with
+respect to ‘robots.txt’ instructions” =&gt; <a href="https://www.linode.com/community/questions/24842/ddos-from-anthropic-ai">are
+you sure</a>? <a href="https://www.businessinsider.com/openai-anthropic-ai-ignore-rule-scraping-web-contect-robotstxt">perhaps
+they mean AI-industry standard, which means “lol get bent”</a>?</li>
+  </ul>
+</p>
+<p>This isn’t to take shots at Claude in particular, and what I’ve seen
+from Anthropic devs show them to be genuinely caring people who want to
+do good and improve developer productivity. This is rather to say the
+entire ethos of the AI industry is shot - there is nothing to “save”, no
+company to model a functional system after. There is only a race to
+those sweet investor dollars, and when your competition consumes so much
+data as to denial-of-service the sites you scrape, what else must a
+company do but consume?</p>
+<p>One point I see a lot in regards to software developers in particular
+is in regards to open-source code, and to a lesser degree, licensing. I
+mostly write apps, not libraries, meaning that my code is relatively
+useless to most devs, but basically everything I write is open-sourced
+on <a href="https://github.com/ZacheryJohnson">Github</a>. There are a
+plethora of reasons to do so: git is a prevalent technology and staying
+sharp is valuable, it’s beneficial to demonstrate personal competency
+and initiative to potential employers, and it invites likeminded folks
+to collaborate and build better things than can be done solo. All my
+code is also under the most permissive license possible, as I really
+don’t care if others make money from my work, be it a solo developer or
+a megacorporation. I live extremely comfortably, and if someone dug
+through my Rust code and found something useful, 1) I’m shocked, you
+must have been digging for a while, and 2) I don’t care in the
+slightest.</p>
+<p>But my code isn’t being used to build new apps or libraries, or
+improve software for end users. My code is being funneled into training
+data sets and averaged with every other repo these web scrapers can
+manage in order to generate bullshit, incorrect responses for future
+queries. My work is being fed into the Probabilistic Output Generator
+and being used in ways I cannot currently consent. A bug in my code that
+I fix tomorrow may forever generate incorrect output for some poor soul
+in the future, like a Stack Overflow poster that says “nvm fixed it”
+without sharing the fix. All of this then being priced behind a monthly
+subscription, whereas my original code was free to the world. The first
+AI agent that is free forever, no-strings-attached will get my support.
+Until then, stop taking free stuff, transforming it behind closed doors,
+generating uncontrollable output, then charging for it.</p>
+<p>Anywho, back to the above blog post:</p>
+<blockquote>
+<p>LLMs easily — alarmingly — clear industry quality bars. Gallingly,
+one of the things they’re best at is churning out just-good-enough
+facsimiles of human creative work. I have family in visual arts. I can’t
+talk to them about LLMs. I don’t blame them. They’re probably not
+wrong.</p>
+</blockquote>
+<p>I don’t know what “I can’t talk to them about LLMs” means, be it
+explanations of LLMs to laypersons are complex and difficult (valid!) or
+those family members are tired of not being heard (most likely!), but in
+either case, the dismissal of these folks in favor of our own
+software-based experience is doing irreparable harm.</p>
+<p>I’ll note that this is a particularly personal subject for me, having
+spent my entire career in game dev. The result of our labor is a
+collaborate, visual product. It is the result of talented, brilliant
+writers communicating their thoughts to wildly imaginative artists,
+alongside ambitious and inspiring game designers who spend their entire
+days thinking about how to challenge and delight human beings.
+Generative AI may reduce the cost of labor, but it absolutely harms the
+labor of humans. I know of cases where the work of creatives was fed
+into a generative AI system by director-level folks without the
+knowledge or consent of the creator, in a well-meaning-but-not-thinking
+attempt to visually demonstrate the director’s feedback rather than use
+words and rely on the creator’s ability to collaborate. These tools
+aren’t just training on creatives’ work, <a href="https://venturebeat.com/games/lil-snack-raises-3-1m-for-snackable-games-built-largely-by-ai/">they are being used to excise
+creatives from the production process</a>.</p>
+<p>I do not know the author Thomas Ptacek, but I’ve read <a href="https://sockpuppet.org/blog/2015/03/06/the-hiring-post/">other
+pieces of their work</a>, and I see some great, well-thought out
+insights about technology and industry. Accordingly, I don’t want my
+fervent disagreement with this particular blog post to reflect on their
+technical abilities or make hasty value judgments on their beliefs. I
+also have to imagine that the use of the phrase “AI skeptics” is
+referring more to the technical ability of generative AI (which I do not
+doubt, particularly in software development) moreso than what I have
+described in previous sections, but these dismissals are exactly the
+case I’m trying to make throughout this article.</p>
+<p>I strongly believe that software engineers in particular are failing
+the world in regards to preventing damage done by generative AI. We
+spend our time bickering about the <em>quality</em> of the output and
+not the <em>impact</em> of the output. We are chasing our own
+perceptions of “productivity” and “quality” in isolation, our heads
+willingly in the sand while creatives everywhere beg for solidarity from
+the group most empowered to bring change to the status quo.</p>
+<h1 id="an-aside-on-electricity">An Aside On Electricity</h1>
+<p>I’m not informed enough to comment on the power/environmental impact
+of generative AI. I myself eat meat 5 times a week, which itself is <a href="https://www.bbc.com/news/science-environment-66238584">enormously
+detrimental to the environment</a>. While most of this article is an
+appeal to others to change their habits, I haven’t changed mine
+regarding meat consumption, and that rings hypocritical. As such, defer
+to other experts regarding power consumption of data centers, as I don’t
+feel I can meaningfully contribute to the conversation.</p>
+<p>I still believe the underlying technology of transformer-based
+machine learning systems is invaluable to future technological
+improvement, and we will inevitably need data centers for that. I just
+believe that we should be mindfully of how we spend this electricity,
+and using generative AI to cheat on homework, <a href="https://www.cnn.com/2025/02/26/world/trump-promotes-gaza-plan-ai-video-intl">generating
+propaganda pieces of colonizing the Gaza strip</a>, and creating
+deepfake pornography seems to be a poor use of electricity.</p>
+<h1 id="the-joy-of-labor">The Joy of Labor</h1>
+<p>I am a big fan of the online MMO Runescape (particularly Oldschool
+Runescape), in which high skill players will have invested no less than
+5000 hours of their lives repeating monotonous tasks and clicking the
+same set of pixels hundreds of thousands of times (this is not
+exaggeration). While I’m not going to delve into why I think Runescape
+is such a phenomenal game in this article, I will add that I adore this
+game, and myself have “wasted” hundreds of hours as a below-average
+player. For those in the know: I just today got my quest cape. Please
+clap.</p>
+<p>Like all Runescape players, I always have content up on my second
+monitor, and one video I found while doing a slayer task was Marstead’s
+<a href="https://www.youtube.com/watch?v=LpPJY-xdA3M">Runescape is
+Awesome, and Here’s Why</a>. This article isn’t here to convince you to
+play Runescape (he does a great job of that himself, and I highly
+encourage you to watch the full 3.5 hours if you’re a fan of video game
+design), but an interlude in the middle stuck out to me: <a href="https://youtu.be/LpPJY-xdA3M?si=tir9BPAZ7kSlba3E&amp;t=8589">“The
+Joy of Labor”</a> (same video as above, but timestamped to the
+particular section).</p>
+<p>I have been fortunate enough since graduating university to work
+exclusively in the video game industry. I don’t necessarily enjoy
+meetings, or sprint planning, or Jira in general, but the actual
+moment-to-moment work of programming, thinking about features,
+addressing bugs that actually affect players: these moments hardly feel
+like “work”. These are the things I chase on my weekends, spending time
+working on side projects that are functionally similar to my day job. To
+me, this labor is enjoyable, and is something I’d continue to pursue
+even if I was wealthy enough to retire tomorrow.</p>
+<p>I am incredibly lucky in that regard, as many folks don’t have that
+privilege, working jobs that are soul destroying, pointless, or
+otherwise negative to society. The communal hatred of “going to work” is
+one that transcends borders, and is found in basically any capital-based
+society. But we all have hobbies we love that involve tedium and
+repetition. I hate playing scales on my guitar in the moment, but love
+how much more expressive I am with the instrument over time. I hate the
+setup and cleanup of board games, but love the tactile time spent at the
+table with my friends. I hate the moment-to-moment feeling of lifting
+weights, but love the mental clarity immediately after and the physical
+benefits weeks later. To be frustrated with tedium is to be human, and
+to relish in the results is divine.</p>
+<p>And I would posit AI isn’t even removing the tedium, it’s simply
+moving it. I prefer the tedium of writing my own code to the tedium of
+code-reviewing Cursor. I was <a href="https://www.youtube.com/watch?v=927W6zzvV-c&amp;t=1792s">in tears
+laughing watching The Primeagen spar with code assistant Devin</a> and
+it’s absolute inability to do a simple, intern-level task that he
+himself would’ve done in less than 2 seconds (Devin is $500/mo for
+teams, and there’s a limit on how much compute you can actually use for
+that $500). We know that in many cases, the output of these tools is
+slightly/moderately/majorly incorrect, and human oversight is required
+to ensure that we’re not sending AI slop out into the world, as
+ultimately us humans are responsible for everything it generates.</p>
+<p>There is room for technology in labor. I don’t wish for human beings
+to spend hours a day <a href="https://www.theverge.com/news/644320/us-commerce-secretary-howard-lutnick-says-well-be-making-iphones-in-the-us">screwing
+screws into iPhones</a> (fuck you Howard Lutnick). Rather, I wish for
+those human beings to have their minds challenged and expanded and
+improved in whichever ways we see fit, as us human beings are excellent
+at solving problems.</p>
+<p>When we view “labor” as simply the output rather than the process, we
+abandon our desire to improve ourselves. When we are beholden to
+stockholders and the idea of “return on investment”, we view labor as
+the thing in our way to profit. I want to make a great product. AI
+enthusiasts want to make a great profit. When executives declare they
+wish to reduce the cost of labor, they aren’t consulting with their
+on-the-factory-floor experts, they’re laying them off.</p>
+<h1 id="the-joy-of-improvement">The Joy of Improvement</h1>
+<p>There’s a pretty common phrase I hear around math in the American
+education system that fundamentally boils down to “when am I ever going
+to use this in my day-to-day life?” At it’s core, this is a solid
+argument: why should I waste my time memorizing the Pythagorean theorem,
+or quadratic equation, or learning calculus, etc etc, if I’m aiming to
+be a mechanic or in hospitality or in healthcare etc etc. If you’ve ever
+thought the same, I sympathize.</p>
+<p>Why do professional athletes lift weights? How many points is a 375lb
+squat worth on the basketball court? How many times does a boxer need to
+skip rope to win her next bout? Just as the muscles trained in the
+weight room are utilized in the sport itself, the skills developed in
+the classroom are used throughout life. Your ability to persevere,
+learning how to ask for help, learning what fields you like/dislike,
+learning what skills you value in your peers - all of these skills are
+built in math class, in history class, in English class, in Spanish
+class, and even in gym. Exposure to things we aren’t good at or can’t do
+at the moment is the entire point.</p>
+<p>This isn’t a defense of the American education system or curriculum,
+and there’s good arguments to be made about what should be mandatory vs
+elective in school. And this is not a uniquely American/western problem.
+Chinese companies have <a href="https://www.theverge.com/news/682737/china-shuts-down-ai-chatbots-exam-season">temporarily
+disabled some features to prevent cheating</a> as end-of-year exams
+(“gaokao”) approach.</p>
+<p>But the idea that we must teach what is strictly necessary and no
+more is contrary to how life is lived. Rare is the skill that is not
+transferable, and problem solving is humanity’s most fundamental skill.
+Delegating all problems to the Probabilistic Output Generator is the
+antithesis of a society oriented towards progress and improvement.</p>
+<p>And maybe improving at math doesn’t inspire the same sense of joy in
+improvement as increasing your PR at the gym, or beating a boss in Dark
+Souls, and that’s okay! Humanity is awesome because of the variety in
+our preferences and lived experiences. But we are actively relegating
+the importance of effort and inflating the importance of results to our
+peril.</p>
+<h1 id="the-basilisk">The Basilisk</h1>
+<blockquote>
+<p><strong>Roko’s basilisk</strong> is a <a href="https://en.wikipedia.org/wiki/Thought_experiment" title="Thought experiment">thought experiment</a> which states there
+could be an otherwise benevolent artificial <a href="https://en.wikipedia.org/wiki/Superintelligence" title="Superintelligence">superintelligence</a> (<a href="https://en.wikipedia.org/wiki/AI" title="AI">AI</a>) in the future
+that would punish anyone who knew of its potential existence but did not
+directly contribute to its advancement or development, in order to
+incentivize said advancement.</p>
+</blockquote>
+<p><del>Losers</del> <a href="https://www.vice.com/en/article/what-is-rokos-basilisk-elon-musk-grimes/">Silicon
+Valley types</a> have given a shocking amount of credence to Roko’s
+basilisk, the idea that we must <del>worship</del> contribute to the
+development of <del>god</del> AI lest we be <del>sent to hell</del>
+destroyed by whatever future corporeal form the AI inhabits. It’s
+Pascal’s Wager for tech bros who never took a humanities class.</p>
+<p>I’m not here to guilt you if you’ve used generative AI to create
+images for your D&D campaign that better immerse your party. I’m not
+here to tell you that the gym + meal plan ChatGPT generated for you was
+bad or unhealthy, and in fact it very well may be beneficial towards
+your goals. I’m not here to tell you that the automation scripts that
+Cursor whipped up don’t accurately and effectively solve the monotony in
+your app deployment processes.</p>
+<p>Rather, I’m here to tell you that the human beings who enabled this
+generative AI to exist are not rewarded for these efforts, and they are
+instead being harmed and removed from the process. They are having
+revenue streams taken away. They are having works attributed to them
+that are not theirs. They are being relegated to “training data” for
+server racks in data centers unknown.</p>
+<p>The solution to the basilisk is simple: let it die. We are woefully
+unprepared for the negative consequences of this technology, and the
+unfettered burning of investment money and marketing hype benefits only
+those who could possibly appease the basilisk, as they are the ones with
+the data centers and cloud capital. Stop using generative AI tools in
+all shapes and forms, from silly image generation to “productivity
+boosts” at work. If you are in a position of power at work, fight for
+your human colleagues and their treatment, and remove generative AI
+tools wherever possible. Without consumer interest, investor interest
+will nosedive and we can return to a sane level of investment in machine
+learning technology that actually improves the world. Let legislators
+step in and protect their constituents before Silicon Valley damns us to
+an existence without truth or intention.</p>
+<h1 id="the-joy-of-humanity">The Joy of Humanity</h1>
+<p>Sewell Setzer III should be alive today. Perhaps he would’ve read
+this article and called me a dumbass, attributing his ability to get
+through school to generative AI or recalling some awesome D&amp;D
+campaign moments that were provided by generative AI. The world would be
+a better place if he had the opportunity to tell me I’m wrong.</p>
+<p>In the 4.5 billion years that our planet has existed, modern humans
+account for roughly 12,000 of those years. In those 12,000 years, we
+have <a href="https://en.wikipedia.org/wiki/List_of_first_human_settlements">settled
+the globe</a>, <a href="https://royalsocietypublishing.org/doi/10.1098/rstb.2015.0164">mastered
+the elements</a>, <a href="https://www.verywellhealth.com/longevity-throughout-history-2224054">cheated
+death</a>, <a href="https://www.statista.com/topics/1668/wheat/#:~:text=The%20global%20production%20volume%20of%20wheat%20came,265%20million%20metric%20tons%20worldwide%20by%202024/2025.">tilled
+the earth</a>, <a href="https://www.theguardian.com/artanddesign/2019/jul/17/greatest-photos-ever-moon-landing-shots-artistic-masterpieces">left
+the earth</a>, and <a href="https://spectrum.ieee.org/the-women-behind-eniac">created rocks
+that think</a>. In those 12,000 years, we have <a href="https://www.nbcnews.com/science/environment/china-got-blue-skies-time-olympics-rcna15340">covered
+the sun with pollution</a>, <a href="https://www.theguardian.com/environment/2018/oct/30/humanity-wiped-out-animals-since-1970-major-report-finds">eradicated
+thousands of species</a>, <a href="https://www.marinemammalcenter.org/news/salon-seals-the-chunky-einsteins-of-the-ocean-are-dying-painfully-due-to-plastic-pollution">actively
+harm thousands more</a>, <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">raised
+the ambient temperature of the planet for our children</a> and <a href="https://www.unicef.org/press-releases/least-322-children-reportedly-killed-gaza-strip-following-breakdown-ceasefire">abandoned
+the children that are already here</a>. We are kind, collaborative
+creatures. We are mean, exploitative creatures. We are complex. We are
+the most interesting creature that we know of in the observable
+universe, utterly alone in a sea of millions of billions of stars. We
+are human.</p>
+<p>If nothing else, I would ask of you this: don’t relegate your ability
+to think to AI. Heed Frank Herbert’s words: thou shalt not make a
+machine in the likeness of a human mind. Cherish the mind you possess
+and it’s infinite ability to reason, to doubt, to love, to create. Don’t
+let those who own cloud capital and train the models lessen the
+greatest gift you have been given.</p>
+<p>If you instead enjoy the mediocre, unreliable, uninspired, hateful
+world that has emerged, where those who trained the AI reap the rewards
+and those who created for creation’s sake are left behind, fair enough.
+But if that’s the world you want to live in, then feed me to the
+basilisk first.</p>
+<blockquote>
+<p>The task that generative A.I. has been most successful at is lowering
+our expectations, both of the things we read and of ourselves when we
+write anything for others to read. It is a fundamentally dehumanizing
+technology because it treats us as less than what we are: creators and
+apprehenders of meaning. It reduces the amount of intention in the
+world. 
+<br>
+<a href="https://www.newyorker.com/culture/the-weekend-essay/why-ai-isnt-going-to-make-art">Ted
+Chiang</a></p>
+</blockquote>
+</main>
+</body>
+</html>
