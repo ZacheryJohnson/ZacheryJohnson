@@ -1,1 +1,1 @@
-Hi, I'm Zach Johnson (he/him). Currently a freelance software engineer.
+Hi, I'm Zach Johnson (he/him).
